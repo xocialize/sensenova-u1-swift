@@ -1,0 +1,218 @@
+[
+  {
+    "dit_forwards" : 2,
+    "width" : 2048,
+    "height" : 2048,
+    "seconds" : 3.651231050491333,
+    "dit_ms_per_call" : 1825.6155252456665,
+    "file" : "Bayer_photo__bicubic__U1-a-t0.5-s2.png"
+  },
+  {
+    "dit_ms_per_call" : 1787.646472454071,
+    "dit_forwards" : 2,
+    "height" : 2048,
+    "file" : "Bayer_photo__jpeg__U1-a-t0.5-s2.png",
+    "seconds" : 3.5752929449081421,
+    "width" : 2048
+  },
+  {
+    "height" : 2048,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1787.0219945907593,
+    "file" : "Bayer_photo__lanczos__U1-a-t0.5-s2.png",
+    "seconds" : 3.5740439891815186,
+    "width" : 2048
+  },
+  {
+    "file" : "CustSpotlight_graphic__bicubic__U1-a-t0.5-s2.png",
+    "height" : 2048,
+    "dit_forwards" : 2,
+    "seconds" : 3.5709129571914673,
+    "dit_ms_per_call" : 1785.4564785957336,
+    "width" : 2048
+  },
+  {
+    "width" : 2048,
+    "dit_ms_per_call" : 1780.331015586853,
+    "height" : 2048,
+    "seconds" : 3.5606620311737061,
+    "file" : "CustSpotlight_graphic__jpeg__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 1779.0845036506653,
+    "file" : "CustSpotlight_graphic__lanczos__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2,
+    "width" : 2048,
+    "height" : 2048,
+    "seconds" : 3.5581690073013306
+  },
+  {
+    "seconds" : 3.594633936882019,
+    "dit_ms_per_call" : 1797.3169684410095,
+    "dit_forwards" : 2,
+    "width" : 2048,
+    "height" : 2048,
+    "file" : "FisherPaykel_photo__bicubic__U1-a-t0.5-s2.png"
+  },
+  {
+    "seconds" : 3.6332410573959351,
+    "dit_forwards" : 2,
+    "file" : "FisherPaykel_photo__jpeg__U1-a-t0.5-s2.png",
+    "dit_ms_per_call" : 1816.6205286979675,
+    "width" : 2048,
+    "height" : 2048
+  },
+  {
+    "height" : 2048,
+    "dit_ms_per_call" : 1820.1565146446228,
+    "seconds" : 3.6403130292892456,
+    "file" : "FisherPaykel_photo__lanczos__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2,
+    "width" : 2048
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 3.6372449398040771,
+    "width" : 2048,
+    "height" : 2048,
+    "dit_ms_per_call" : 1818.6224699020386,
+    "file" : "KEYNOTE_graphic__bicubic__U1-a-t0.5-s2.png"
+  },
+  {
+    "dit_ms_per_call" : 1821.4055299758911,
+    "file" : "KEYNOTE_graphic__jpeg__U1-a-t0.5-s2.png",
+    "height" : 2048,
+    "dit_forwards" : 2,
+    "width" : 2048,
+    "seconds" : 3.6428110599517822
+  },
+  {
+    "height" : 2048,
+    "seconds" : 3.6223340034484863,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1811.1670017242432,
+    "file" : "KEYNOTE_graphic__lanczos__U1-a-t0.5-s2.png",
+    "width" : 2048
+  },
+  {
+    "dit_ms_per_call" : 1817.8184628486633,
+    "dit_forwards" : 2,
+    "seconds" : 3.6356369256973267,
+    "height" : 2048,
+    "width" : 2048,
+    "file" : "Kelloggs_photo__bicubic__U1-a-t0.5-s2.png"
+  },
+  {
+    "height" : 2048,
+    "dit_ms_per_call" : 1820.0960159301758,
+    "seconds" : 3.6401920318603516,
+    "file" : "Kelloggs_photo__jpeg__U1-a-t0.5-s2.png",
+    "width" : 2048,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1831.3434720039368,
+    "height" : 2048,
+    "width" : 2048,
+    "seconds" : 3.6626869440078735,
+    "file" : "Kelloggs_photo__lanczos__U1-a-t0.5-s2.png"
+  },
+  {
+    "seconds" : 3.6433010101318359,
+    "width" : 2048,
+    "file" : "PubSec_graphic__bicubic__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1821.650505065918,
+    "height" : 2048
+  },
+  {
+    "seconds" : 3.6757349967956543,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1837.8674983978271,
+    "width" : 2048,
+    "file" : "PubSec_graphic__jpeg__U1-a-t0.5-s2.png",
+    "height" : 2048
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1844.4060087203979,
+    "width" : 2048,
+    "height" : 2048,
+    "file" : "PubSec_graphic__lanczos__U1-a-t0.5-s2.png",
+    "seconds" : 3.6888120174407959
+  },
+  {
+    "height" : 2048,
+    "width" : 2048,
+    "dit_forwards" : 2,
+    "file" : "RBC_photo__bicubic__U1-a-t0.5-s2.png",
+    "dit_ms_per_call" : 1868.2305216789246,
+    "seconds" : 3.7364610433578491
+  },
+  {
+    "width" : 2048,
+    "file" : "RBC_photo__jpeg__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2,
+    "seconds" : 3.7122451066970825,
+    "dit_ms_per_call" : 1856.1225533485413,
+    "height" : 2048
+  },
+  {
+    "height" : 2048,
+    "dit_ms_per_call" : 1861.5819811820984,
+    "seconds" : 3.7231639623641968,
+    "width" : 2048,
+    "file" : "RBC_photo__lanczos__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 2048,
+    "dit_ms_per_call" : 1847.2769856452942,
+    "seconds" : 3.6945539712905884,
+    "file" : "SNS_graphic__bicubic__U1-a-t0.5-s2.png",
+    "width" : 2048
+  },
+  {
+    "dit_ms_per_call" : 1847.4860191345215,
+    "height" : 2048,
+    "file" : "SNS_graphic__jpeg__U1-a-t0.5-s2.png",
+    "width" : 2048,
+    "seconds" : 3.694972038269043,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "SNS_graphic__lanczos__U1-a-t0.5-s2.png",
+    "height" : 2048,
+    "dit_ms_per_call" : 1847.3820090293884,
+    "width" : 2048,
+    "seconds" : 3.6947640180587769
+  },
+  {
+    "seconds" : 3.7034119367599487,
+    "dit_ms_per_call" : 1851.7059683799744,
+    "height" : 2048,
+    "file" : "Unilever_photo__bicubic__U1-a-t0.5-s2.png",
+    "dit_forwards" : 2,
+    "width" : 2048
+  },
+  {
+    "seconds" : 3.70318603515625,
+    "dit_forwards" : 2,
+    "height" : 2048,
+    "dit_ms_per_call" : 1851.593017578125,
+    "width" : 2048,
+    "file" : "Unilever_photo__jpeg__U1-a-t0.5-s2.png"
+  },
+  {
+    "seconds" : 3.7122550010681152,
+    "width" : 2048,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 1856.1275005340576,
+    "height" : 2048,
+    "file" : "Unilever_photo__lanczos__U1-a-t0.5-s2.png"
+  }
+]

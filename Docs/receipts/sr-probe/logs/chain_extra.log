@@ -1,0 +1,64 @@
+=== U1-a-t0.9-s1 bench (27 × 512² → 2048²)  08:37:28  load 1.92 2.30 2.32
+[probe] done: 27 written · peak memory 20164 MB
+=== U1-a-t0.9-s1 SA-Text lq3 (200 × 128² → 512²)  08:38:22  load 2.61 2.47 2.38
+[probe] done: 200 written · peak memory 19256 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.9-s1_lq3.json
+=== U1-a-t0.9-s1 SA-Text lq1 (200 × 128² → 512²)  08:39:20  load 2.63 2.50 2.40
+[probe] done: 200 written · peak memory 19256 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.9-s1_lq1.json
+=== U1-a-t0.9-s1 ScreenSR ×1  08:40:19  load 2.29 2.42 2.38
+[probe] done: 4 written · peak memory 19256 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1_x1.json
+=== U1-a-t0.9-s1 ScreenSR ×2  08:40:22  load 2.29 2.42 2.38
+[probe] done: 4 written · peak memory 19659 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1_x2.json
+=== U1-a-t0.9-s1 ScreenSR ×4  08:40:26  load 2.19 2.40 2.37
+[probe] done: 4 written · peak memory 20164 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1_x4.json
+=== U1-b-t0.9-s1 bench (27 × 512² → 2048²)  08:40:35  load 2.63 2.48 2.40
+[probe] done: 27 written · peak memory 20217 MB
+=== U1-b-t0.9-s1 SA-Text lq3 (200 × 128² → 512²)  08:41:33  load 2.62 2.51 2.41
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.9-s1_lq3.json
+=== U1-b-t0.9-s1 SA-Text lq1 (200 × 128² → 512²)  08:42:53  load 2.04 2.33 2.35
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.9-s1_lq1.json
+=== U1-b-t0.9-s1 ScreenSR ×1  08:44:15  load 4.10 3.02 2.62
+[probe] done: 4 written · peak memory 19488 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1_x1.json
+=== U1-b-t0.9-s1 ScreenSR ×2  08:44:18  load 4.10 3.02 2.62
+[probe] done: 4 written · peak memory 19714 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1_x2.json
+=== U1-b-t0.9-s1 ScreenSR ×4  08:44:22  load 4.25 3.07 2.64
+[probe] done: 4 written · peak memory 20217 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1_x4.json
+=== U1-a-t0.7-s1 bench (27 × 512² → 2048²)  08:44:32  load 3.67 2.98 2.61
+[probe] done: 0 written · peak memory 18951 MB
+=== U1-a-t0.7-s1 SA-Text lq3 (200 × 128² → 512²)  08:44:34  load 3.67 2.98 2.61
+[probe] done: 200 written · peak memory 19256 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.7-s1_lq3.json
+=== U1-a-t0.7-s1 SA-Text lq1 (200 × 128² → 512²)  08:45:37  load 4.91 3.45 2.81
+[probe] done: 200 written · peak memory 19256 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.7-s1_lq1.json
+=== U1-a-t0.7-s1 ScreenSR ×1  08:46:40  load 4.05 3.46 2.86
+[probe] done: 0 written · peak memory 18951 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.7-s1_x1.json
+=== U1-a-t0.7-s1 ScreenSR ×2  08:46:42  load 4.05 3.46 2.86
+[probe] done: 0 written · peak memory 18951 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.7-s1_x2.json
+=== U1-a-t0.7-s1 ScreenSR ×4  08:46:43  load 4.05 3.46 2.86
+[probe] done: 0 written · peak memory 18951 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.7-s1_x4.json
+=== score bench (SSIMULACRA2 / gradient / FidelityGuard / octaves)  08:46:45  load 4.60 3.58 2.90
+  Unilever_photo/jpeg/lanczos-mps  FR -11.69  grad 1.825  sigma 96.7  DC psnr 43.2 ssim 0.9987 worst 0.9945  oct 0.882/0.879/0.932/0.981
+  Unilever_photo/jpeg/REFERENCE  FR 100.00  grad 3.382  sigma 97.8  DC psnr 32.3 ssim 0.9485 worst 0.8863  oct nan/nan/nan/nan
+=== nrscore bench  09:00:54  load 4.00 4.60 4.15
+  dump/Unilever_photo__reference.png  NR 0.9089
+[nr] 387 scores → bench/nr.json
+=== analyze  09:02:16  load 4.83 4.72 4.23
+  logs/timing_U1-b-t0.9-s1_screensr_x4.json                              n=   4  median   2.11 s/image · forward   2115 ms × 1
+  mlxengine-forge/Tools/vosr-gates/20260926/timing_corpus.json           n=  27  median  34.80 s/image · forward    692 ms × 25
+  mlxengine-forge/Tools/vosr-gates/20260926/timing_satext3.json          n=1000  median   1.19 s/image · forward    711 ms × 1
+  mlxengine-image/WIP/iris-3b-oracle/gates/logs/timing_corpus.json       n=  27  median   7.37 s/image · forward    815 ms × 9
+  mlxengine-image/WIP/iris-3b-oracle/gates/logs/timing_satext3.json      n=1000  median   0.82 s/image · forward    813 ms × 1
+=== EXTRA DONE  09:02:16  load 4.83 4.72 4.23

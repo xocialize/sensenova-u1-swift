@@ -1,0 +1,34 @@
+[
+  {
+    "dit_ms_per_call" : 258.78250598907471,
+    "dit_forwards" : 2,
+    "file" : "001.png",
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.51756501197814941
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.48245000839233398,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 241.22500419616699,
+    "file" : "002.png"
+  },
+  {
+    "file" : "010.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.48582994937896729,
+    "dit_ms_per_call" : 242.91497468948364,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "dit_ms_per_call" : 242.73252487182617,
+    "file" : "095.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.48546504974365234,
+    "width" : 512
+  }
+]

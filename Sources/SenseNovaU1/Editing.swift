@@ -189,6 +189,7 @@ extension NEOChatModel {
         params: T2IParams = T2IParams(),
         imgCfgScale: Float = 1.0,
         injectedNoise: MLXArray? = nil,
+        initImage: MLXArray? = nil,
         onStep: ((Int, Int) -> Void)? = nil
     ) throws -> MLXArray {
         let px = config.pixelsPerToken
@@ -235,19 +236,23 @@ extension NEOChatModel {
         let idxImgCond = imageIndexes(afterT: imgCondMaxT)
         let idxUncond = imageIndexes(afterT: uncondMaxT)
 
-        // -- init noise --
+        // -- init noise (and, for an init-image run, the partial-t start) --
         let sigma = noiseScale(tokenH: tokenH, tokenW: tokenW)
-        var image: MLXArray
-        if let noise = injectedNoise {
-            image = noise
+        let noise: MLXArray
+        if let injected = injectedNoise {
+            noise = injected
         } else {
             MLXRandom.seed(params.seed)
-            image = (MLXRandom.normal([1, 3, height, width]) * sigma).asType(.bfloat16)
+            noise = (MLXRandom.normal([1, 3, height, width]) * sigma).asType(.bfloat16)
         }
+        let startT: Float = initImage == nil ? 0 : params.startT
+        var image = Self.initialState(
+            noise: noise, initImage: initImage, startT: startT, mix: params.initNoiseMix,
+            height: height, width: width)
 
         let timesteps = shiftedTimesteps(
             numSteps: params.numSteps, shift: params.timestepShift,
-            enable: params.enableTimestepShift)
+            enable: params.enableTimestepShift, startT: startT)
 
         // loop-invariant noise-scale embedding, at the reference's L-row width
         // (see t2iDenoise for why a 1-row broadcast is not equivalent)

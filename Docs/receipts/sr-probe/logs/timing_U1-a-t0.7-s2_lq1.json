@@ -1,0 +1,1602 @@
+[
+  {
+    "width" : 512,
+    "seconds" : 0.4144209623336792,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0000.png",
+    "dit_ms_per_call" : 207.2104811668396
+  },
+  {
+    "seconds" : 0.37639296054840088,
+    "file" : "0001.png",
+    "dit_ms_per_call" : 188.19648027420044,
+    "width" : 512,
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "dit_ms_per_call" : 190.09250402450562,
+    "height" : 512,
+    "file" : "0002.png",
+    "seconds" : 0.38018500804901123,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "file" : "0003.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.39023399353027344,
+    "width" : 512,
+    "dit_ms_per_call" : 195.11699676513672,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0004.png",
+    "dit_ms_per_call" : 188.17847967147827,
+    "height" : 512,
+    "seconds" : 0.37635695934295654,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "file" : "0005.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37654399871826172,
+    "dit_ms_per_call" : 188.27199935913086
+  },
+  {
+    "file" : "0006.png",
+    "dit_ms_per_call" : 188.43501806259155,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37687003612518311
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37574505805969238,
+    "dit_ms_per_call" : 187.87252902984619,
+    "file" : "0007.png"
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0008.png",
+    "dit_ms_per_call" : 186.96850538253784,
+    "seconds" : 0.37393701076507568
+  },
+  {
+    "file" : "0009.png",
+    "seconds" : 0.37446105480194092,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.23052740097046,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "seconds" : 0.3768080472946167,
+    "dit_ms_per_call" : 188.40402364730835,
+    "file" : "0010.png",
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "seconds" : 0.3767540454864502,
+    "dit_ms_per_call" : 188.3770227432251,
+    "width" : 512,
+    "file" : "0011.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 188.18551301956177,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0012.png",
+    "seconds" : 0.37637102603912354,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "seconds" : 0.3759080171585083,
+    "file" : "0013.png",
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.95400857925415
+  },
+  {
+    "file" : "0014.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37669801712036133,
+    "dit_ms_per_call" : 188.34900856018066,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37523698806762695,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.61849403381348,
+    "file" : "0015.png"
+  },
+  {
+    "width" : 512,
+    "file" : "0016.png",
+    "seconds" : 0.37643802165985107,
+    "dit_ms_per_call" : 188.21901082992554,
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "file" : "0017.png",
+    "seconds" : 0.37484097480773926,
+    "dit_ms_per_call" : 187.42048740386963,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0018.png",
+    "seconds" : 0.37626397609710693,
+    "dit_ms_per_call" : 188.13198804855347,
+    "width" : 512
+  },
+  {
+    "file" : "0019.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.95548582077026,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37791097164154053
+  },
+  {
+    "dit_ms_per_call" : 187.81048059463501,
+    "seconds" : 0.37562096118927002,
+    "width" : 512,
+    "file" : "0020.png",
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0021.png",
+    "seconds" : 0.37616395950317383,
+    "dit_ms_per_call" : 188.08197975158691,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.85247611999512,
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37970495223999023,
+    "file" : "0022.png"
+  },
+  {
+    "width" : 512,
+    "dit_ms_per_call" : 188.54647874832153,
+    "seconds" : 0.37709295749664307,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "file" : "0023.png"
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37822198867797852,
+    "dit_ms_per_call" : 189.11099433898926,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0024.png"
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "dit_ms_per_call" : 188.79151344299316,
+    "file" : "0025.png",
+    "seconds" : 0.37758302688598633,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0026.png",
+    "dit_ms_per_call" : 188.7810230255127,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37756204605102539
+  },
+  {
+    "dit_ms_per_call" : 191.5925145149231,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.38318502902984619,
+    "file" : "0027.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 189.62651491165161,
+    "width" : 512,
+    "seconds" : 0.37925302982330322,
+    "file" : "0028.png",
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "file" : "0029.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 192.83348321914673,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.38566696643829346
+  },
+  {
+    "file" : "0030.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37904596328735352,
+    "height" : 512,
+    "dit_ms_per_call" : 189.52298164367676,
+    "width" : 512
+  },
+  {
+    "file" : "0031.png",
+    "seconds" : 0.3779900074005127,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 188.99500370025635
+  },
+  {
+    "width" : 512,
+    "dit_ms_per_call" : 190.36000967025757,
+    "height" : 512,
+    "file" : "0032.png",
+    "seconds" : 0.38072001934051514,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0033.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.80051374435425,
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.3776010274887085
+  },
+  {
+    "file" : "0034.png",
+    "height" : 512,
+    "seconds" : 0.38398492336273193,
+    "dit_ms_per_call" : 191.99246168136597,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "file" : "0035.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.44495916366577,
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37888991832733154
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0036.png",
+    "seconds" : 0.37815999984741211,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 189.07999992370605
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "file" : "0037.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37642598152160645,
+    "dit_ms_per_call" : 188.21299076080322
+  },
+  {
+    "seconds" : 0.38324689865112305,
+    "width" : 512,
+    "dit_ms_per_call" : 191.62344932556152,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "file" : "0038.png"
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 187.34550476074219,
+    "file" : "0039.png",
+    "seconds" : 0.37469100952148438,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.63052129745483,
+    "file" : "0040.png",
+    "width" : 512,
+    "seconds" : 0.37726104259490967,
+    "height" : 512
+  },
+  {
+    "file" : "0041.png",
+    "seconds" : 0.37652599811553955,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 188.26299905776978,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0042.png",
+    "dit_ms_per_call" : 190.07700681686401,
+    "height" : 512,
+    "seconds" : 0.38015401363372803,
+    "width" : 512
+  },
+  {
+    "file" : "0043.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37846100330352783,
+    "dit_ms_per_call" : 189.23050165176392,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "seconds" : 0.37873709201812744,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 189.36854600906372,
+    "file" : "0044.png"
+  },
+  {
+    "seconds" : 0.3805469274520874,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 190.2734637260437,
+    "height" : 512,
+    "file" : "0045.png"
+  },
+  {
+    "height" : 512,
+    "dit_ms_per_call" : 189.27949666976929,
+    "dit_forwards" : 2,
+    "file" : "0046.png",
+    "seconds" : 0.37855899333953857,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37733101844787598,
+    "file" : "0047.png",
+    "dit_ms_per_call" : 188.66550922393799,
+    "dit_forwards" : 2
+  },
+  {
+    "seconds" : 0.37770199775695801,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.850998878479,
+    "width" : 512,
+    "file" : "0048.png"
+  },
+  {
+    "width" : 512,
+    "file" : "0049.png",
+    "seconds" : 0.3766549825668335,
+    "dit_ms_per_call" : 188.32749128341675,
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0050.png",
+    "height" : 512,
+    "dit_ms_per_call" : 195.26445865631104,
+    "dit_forwards" : 2,
+    "seconds" : 0.39052891731262207,
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0051.png",
+    "dit_ms_per_call" : 189.96703624725342,
+    "width" : 512,
+    "seconds" : 0.37993407249450684
+  },
+  {
+    "file" : "0052.png",
+    "seconds" : 0.38047695159912109,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 190.23847579956055
+  },
+  {
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0053.png",
+    "seconds" : 0.38075399398803711,
+    "dit_ms_per_call" : 190.37699699401855
+  },
+  {
+    "dit_ms_per_call" : 189.37301635742188,
+    "seconds" : 0.37874603271484375,
+    "dit_forwards" : 2,
+    "file" : "0054.png",
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0055.png",
+    "dit_ms_per_call" : 188.03399801254272,
+    "seconds" : 0.37606799602508545,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.37778401374816895,
+    "height" : 512,
+    "file" : "0056.png",
+    "dit_ms_per_call" : 188.89200687408447
+  },
+  {
+    "file" : "0057.png",
+    "seconds" : 0.37731409072875977,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.65704536437988,
+    "width" : 512
+  },
+  {
+    "seconds" : 0.3788299560546875,
+    "dit_forwards" : 2,
+    "file" : "0058.png",
+    "dit_ms_per_call" : 189.41497802734375,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "file" : "0059.png",
+    "seconds" : 0.37879598140716553,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.39799070358276
+  },
+  {
+    "height" : 512,
+    "file" : "0060.png",
+    "seconds" : 0.37850797176361084,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 189.25398588180542
+  },
+  {
+    "file" : "0061.png",
+    "seconds" : 0.3783719539642334,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.1859769821167,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "dit_ms_per_call" : 189.84752893447876,
+    "seconds" : 0.37969505786895752,
+    "width" : 512,
+    "file" : "0062.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.83204460144043,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37766408920288086,
+    "file" : "0063.png"
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "file" : "0064.png",
+    "dit_ms_per_call" : 187.3745322227478,
+    "seconds" : 0.37474906444549561,
+    "dit_forwards" : 2
+  },
+  {
+    "height" : 512,
+    "file" : "0065.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 191.08098745346069,
+    "seconds" : 0.38216197490692139,
+    "width" : 512
+  },
+  {
+    "dit_ms_per_call" : 189.08953666687012,
+    "width" : 512,
+    "seconds" : 0.37817907333374023,
+    "file" : "0066.png",
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "dit_ms_per_call" : 192.41702556610107,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0067.png",
+    "seconds" : 0.38483405113220215
+  },
+  {
+    "file" : "0068.png",
+    "dit_forwards" : 2,
+    "width" : 512,
+    "seconds" : 0.37970900535583496,
+    "dit_ms_per_call" : 189.85450267791748,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 191.65444374084473,
+    "file" : "0069.png",
+    "seconds" : 0.38330888748168945
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.38148105144500732,
+    "file" : "0070.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 190.74052572250366
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37888205051422119,
+    "file" : "0071.png",
+    "width" : 512,
+    "dit_ms_per_call" : 189.4410252571106,
+    "height" : 512
+  },
+  {
+    "file" : "0072.png",
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.21948766708374,
+    "seconds" : 0.37643897533416748
+  },
+  {
+    "dit_ms_per_call" : 188.52049112319946,
+    "file" : "0073.png",
+    "seconds" : 0.37704098224639893,
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 190.33747911453247,
+    "seconds" : 0.38067495822906494,
+    "dit_forwards" : 2,
+    "file" : "0074.png"
+  },
+  {
+    "dit_ms_per_call" : 190.12451171875,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "seconds" : 0.3802490234375,
+    "file" : "0075.png",
+    "width" : 512
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "dit_ms_per_call" : 188.83955478668213,
+    "dit_forwards" : 2,
+    "seconds" : 0.37767910957336426,
+    "file" : "0076.png"
+  },
+  {
+    "file" : "0077.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.38101100921630859,
+    "dit_ms_per_call" : 190.5055046081543,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "file" : "0078.png",
+    "seconds" : 0.37794101238250732,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "dit_ms_per_call" : 188.97050619125366
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "file" : "0079.png",
+    "dit_ms_per_call" : 190.0709867477417,
+    "seconds" : 0.3801419734954834,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37739896774291992,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.69948387145996,
+    "file" : "0080.png",
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "seconds" : 0.37714004516601562,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.57002258300781,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0081.png"
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "dit_ms_per_call" : 189.24599885940552,
+    "file" : "0082.png",
+    "seconds" : 0.37849199771881104,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 190.57250022888184,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0083.png",
+    "seconds" : 0.38114500045776367,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0084.png",
+    "seconds" : 0.37736296653747559,
+    "dit_ms_per_call" : 188.68148326873779,
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 187.77745962142944,
+    "dit_forwards" : 2,
+    "file" : "0085.png",
+    "seconds" : 0.37555491924285889
+  },
+  {
+    "seconds" : 0.37521803379058838,
+    "dit_forwards" : 2,
+    "file" : "0086.png",
+    "dit_ms_per_call" : 187.60901689529419,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "file" : "0087.png",
+    "seconds" : 0.37885606288909912,
+    "width" : 512,
+    "dit_ms_per_call" : 189.42803144454956
+  },
+  {
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37575697898864746,
+    "dit_ms_per_call" : 187.87848949432373,
+    "file" : "0088.png"
+  },
+  {
+    "height" : 512,
+    "seconds" : 0.37791299819946289,
+    "file" : "0089.png",
+    "width" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.95649909973145
+  },
+  {
+    "file" : "0090.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.65448236465454,
+    "width" : 512,
+    "seconds" : 0.37730896472930908,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "file" : "0091.png",
+    "seconds" : 0.37659001350402832,
+    "dit_ms_per_call" : 188.29500675201416,
+    "dit_forwards" : 2
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "dit_ms_per_call" : 188.14098834991455,
+    "seconds" : 0.3762819766998291,
+    "file" : "0092.png",
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "file" : "0093.png",
+    "seconds" : 0.37517595291137695,
+    "dit_ms_per_call" : 187.58797645568848
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 192.16799736022949,
+    "file" : "0094.png",
+    "seconds" : 0.38433599472045898,
+    "width" : 512
+  },
+  {
+    "seconds" : 0.37523901462554932,
+    "dit_ms_per_call" : 187.61950731277466,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0095.png",
+    "dit_forwards" : 2
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0096.png",
+    "seconds" : 0.3745570182800293,
+    "width" : 512,
+    "dit_ms_per_call" : 187.27850914001465
+  },
+  {
+    "dit_ms_per_call" : 188.19999694824219,
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.37639999389648438,
+    "file" : "0097.png"
+  },
+  {
+    "width" : 512,
+    "dit_ms_per_call" : 188.63946199417114,
+    "dit_forwards" : 2,
+    "file" : "0098.png",
+    "height" : 512,
+    "seconds" : 0.37727892398834229
+  },
+  {
+    "file" : "0099.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37692296504974365,
+    "width" : 512,
+    "dit_ms_per_call" : 188.46148252487183,
+    "height" : 512
+  },
+  {
+    "file" : "0100.png",
+    "seconds" : 0.38302993774414062,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 191.51496887207031,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37690091133117676,
+    "file" : "0101.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.45045566558838
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.74300813674927,
+    "file" : "0102.png",
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37548601627349854
+  },
+  {
+    "seconds" : 0.37584602832794189,
+    "dit_ms_per_call" : 187.92301416397095,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0103.png"
+  },
+  {
+    "dit_ms_per_call" : 188.51602077484131,
+    "height" : 512,
+    "seconds" : 0.37703204154968262,
+    "dit_forwards" : 2,
+    "file" : "0104.png",
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "seconds" : 0.3762279748916626,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.1139874458313,
+    "file" : "0105.png"
+  },
+  {
+    "seconds" : 0.37597393989562988,
+    "dit_ms_per_call" : 187.98696994781494,
+    "file" : "0106.png",
+    "height" : 512,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "seconds" : 0.37970399856567383,
+    "dit_ms_per_call" : 189.85199928283691,
+    "file" : "0107.png",
+    "height" : 512,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "file" : "0108.png",
+    "dit_ms_per_call" : 188.41701745986938,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "seconds" : 0.37683403491973877
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0109.png",
+    "dit_ms_per_call" : 188.3549690246582,
+    "seconds" : 0.37670993804931641,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "file" : "0110.png",
+    "seconds" : 0.3754880428314209,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.74402141571045
+  },
+  {
+    "file" : "0111.png",
+    "seconds" : 0.37522697448730469,
+    "height" : 512,
+    "dit_ms_per_call" : 187.61348724365234,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "dit_ms_per_call" : 187.82645463943481,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0112.png",
+    "seconds" : 0.37565290927886963
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "file" : "0113.png",
+    "dit_ms_per_call" : 188.37499618530273,
+    "height" : 512,
+    "seconds" : 0.37674999237060547
+  },
+  {
+    "seconds" : 0.37603592872619629,
+    "dit_forwards" : 2,
+    "file" : "0114.png",
+    "dit_ms_per_call" : 188.01796436309814,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37620806694030762,
+    "width" : 512,
+    "file" : "0115.png",
+    "dit_ms_per_call" : 188.10403347015381,
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 188.16697597503662,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0116.png",
+    "width" : 512,
+    "seconds" : 0.37633395195007324
+  },
+  {
+    "file" : "0117.png",
+    "width" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.37678611278533936,
+    "dit_ms_per_call" : 188.39305639266968,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37567198276519775,
+    "file" : "0118.png",
+    "dit_ms_per_call" : 187.83599138259888,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "file" : "0119.png",
+    "width" : 512,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "seconds" : 0.37615799903869629,
+    "dit_ms_per_call" : 188.07899951934814
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.76899576187134,
+    "width" : 512,
+    "file" : "0120.png",
+    "height" : 512,
+    "seconds" : 0.37553799152374268
+  },
+  {
+    "height" : 512,
+    "seconds" : 0.37729799747467041,
+    "file" : "0121.png",
+    "width" : 512,
+    "dit_ms_per_call" : 188.64899873733521,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0122.png",
+    "seconds" : 0.37651395797729492,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.25697898864746,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0123.png",
+    "seconds" : 0.37600493431091309,
+    "dit_ms_per_call" : 188.00246715545654
+  },
+  {
+    "file" : "0124.png",
+    "seconds" : 0.3765939474105835,
+    "dit_ms_per_call" : 188.29697370529175,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "file" : "0125.png",
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37679398059844971,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.39699029922485
+  },
+  {
+    "dit_ms_per_call" : 187.88295984268188,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37576591968536377,
+    "file" : "0126.png",
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 187.81203031539917,
+    "file" : "0127.png",
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37562406063079834
+  },
+  {
+    "seconds" : 0.37648296356201172,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.24148178100586,
+    "width" : 512,
+    "file" : "0128.png",
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37717199325561523,
+    "width" : 512,
+    "dit_ms_per_call" : 188.58599662780762,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "file" : "0129.png"
+  },
+  {
+    "file" : "0130.png",
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37616705894470215,
+    "dit_ms_per_call" : 188.08352947235107
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.11552429199219,
+    "height" : 512,
+    "file" : "0131.png",
+    "width" : 512,
+    "seconds" : 0.37823104858398438
+  },
+  {
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "file" : "0132.png",
+    "dit_ms_per_call" : 188.22300434112549,
+    "seconds" : 0.37644600868225098
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.11196088790894,
+    "width" : 512,
+    "file" : "0133.png",
+    "height" : 512,
+    "seconds" : 0.37622392177581787
+  },
+  {
+    "height" : 512,
+    "file" : "0134.png",
+    "dit_ms_per_call" : 187.81000375747681,
+    "seconds" : 0.37562000751495361,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "seconds" : 0.37506198883056641,
+    "dit_forwards" : 2,
+    "file" : "0135.png",
+    "height" : 512,
+    "width" : 512,
+    "dit_ms_per_call" : 187.5309944152832
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.07101249694824,
+    "seconds" : 0.37614202499389648,
+    "file" : "0136.png",
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37487399578094482,
+    "dit_ms_per_call" : 187.43699789047241,
+    "file" : "0137.png"
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37566792964935303,
+    "file" : "0138.png",
+    "dit_ms_per_call" : 187.83396482467651,
+    "dit_forwards" : 2
+  },
+  {
+    "seconds" : 0.37681090831756592,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.40545415878296,
+    "height" : 512,
+    "width" : 512,
+    "file" : "0139.png"
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.71600723266602,
+    "file" : "0140.png",
+    "height" : 512,
+    "seconds" : 0.37543201446533203
+  },
+  {
+    "dit_ms_per_call" : 188.92401456832886,
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.37784802913665771,
+    "file" : "0141.png"
+  },
+  {
+    "file" : "0142.png",
+    "width" : 512,
+    "seconds" : 0.37382698059082031,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 186.91349029541016,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37574100494384766,
+    "file" : "0143.png",
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 187.87050247192383
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "dit_ms_per_call" : 188.02750110626221,
+    "file" : "0144.png",
+    "seconds" : 0.37605500221252441,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37678098678588867,
+    "file" : "0145.png",
+    "dit_ms_per_call" : 188.39049339294434,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "dit_forwards" : 2,
+    "file" : "0146.png",
+    "dit_ms_per_call" : 188.26001882553101,
+    "seconds" : 0.37652003765106201,
+    "height" : 512
+  },
+  {
+    "dit_ms_per_call" : 188.41701745986938,
+    "width" : 512,
+    "file" : "0147.png",
+    "dit_forwards" : 2,
+    "height" : 512,
+    "seconds" : 0.37683403491973877
+  },
+  {
+    "file" : "0148.png",
+    "width" : 512,
+    "dit_ms_per_call" : 187.54398822784424,
+    "height" : 512,
+    "seconds" : 0.37508797645568848,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.79253959655762,
+    "seconds" : 0.37558507919311523,
+    "file" : "0149.png",
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "file" : "0150.png",
+    "height" : 512,
+    "seconds" : 0.3745800256729126,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.2900128364563,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "file" : "0151.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.53403425216675,
+    "height" : 512,
+    "seconds" : 0.3750680685043335
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37656402587890625,
+    "file" : "0152.png",
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 188.28201293945312
+  },
+  {
+    "dit_forwards" : 2,
+    "seconds" : 0.37910592555999756,
+    "file" : "0153.png",
+    "dit_ms_per_call" : 189.55296277999878,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "width" : 512,
+    "file" : "0154.png",
+    "seconds" : 0.37690305709838867,
+    "dit_ms_per_call" : 188.45152854919434
+  },
+  {
+    "file" : "0155.png",
+    "height" : 512,
+    "seconds" : 0.37742090225219727,
+    "width" : 512,
+    "dit_ms_per_call" : 188.71045112609863,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0156.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.37542498111724854,
+    "dit_ms_per_call" : 187.71249055862427,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "file" : "0157.png",
+    "seconds" : 0.38707005977630615,
+    "width" : 512,
+    "dit_forwards" : 2,
+    "height" : 512,
+    "dit_ms_per_call" : 193.53502988815308
+  },
+  {
+    "dit_ms_per_call" : 187.32601404190063,
+    "width" : 512,
+    "file" : "0158.png",
+    "seconds" : 0.37465202808380127,
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "dit_ms_per_call" : 187.50602006912231,
+    "width" : 512,
+    "seconds" : 0.37501204013824463,
+    "file" : "0159.png",
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "seconds" : 0.37651693820953369,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.25846910476685,
+    "file" : "0160.png",
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37735104560852051,
+    "height" : 512,
+    "dit_ms_per_call" : 188.67552280426025,
+    "file" : "0161.png",
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0162.png",
+    "seconds" : 0.37798702716827393,
+    "height" : 512,
+    "dit_ms_per_call" : 188.99351358413696,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "file" : "0163.png",
+    "dit_ms_per_call" : 188.22050094604492,
+    "seconds" : 0.37644100189208984,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "dit_ms_per_call" : 187.96753883361816,
+    "file" : "0164.png",
+    "seconds" : 0.37593507766723633,
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "height" : 512,
+    "seconds" : 0.37761497497558594,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 188.80748748779297,
+    "file" : "0165.png"
+  },
+  {
+    "width" : 512,
+    "file" : "0166.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.58749961853027,
+    "height" : 512,
+    "seconds" : 0.37517499923706055
+  },
+  {
+    "seconds" : 0.37462997436523438,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512,
+    "dit_ms_per_call" : 187.31498718261719,
+    "file" : "0167.png"
+  },
+  {
+    "dit_ms_per_call" : 188.21603059768677,
+    "height" : 512,
+    "seconds" : 0.37643206119537354,
+    "dit_forwards" : 2,
+    "file" : "0168.png",
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.72249126434326,
+    "width" : 512,
+    "file" : "0169.png",
+    "height" : 512,
+    "seconds" : 0.37744498252868652
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.37673699855804443,
+    "file" : "0170.png",
+    "dit_ms_per_call" : 188.36849927902222
+  },
+  {
+    "height" : 512,
+    "file" : "0171.png",
+    "seconds" : 0.37693595886230469,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "dit_ms_per_call" : 188.46797943115234
+  },
+  {
+    "file" : "0172.png",
+    "dit_ms_per_call" : 188.30001354217529,
+    "seconds" : 0.37660002708435059,
+    "width" : 512,
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37684297561645508,
+    "dit_ms_per_call" : 188.42148780822754,
+    "file" : "0173.png",
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0174.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.60854005813599,
+    "width" : 512,
+    "seconds" : 0.37521708011627197,
+    "height" : 512
+  },
+  {
+    "width" : 512,
+    "file" : "0175.png",
+    "seconds" : 0.37527692317962646,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.63846158981323,
+    "height" : 512
+  },
+  {
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37575602531433105,
+    "file" : "0176.png",
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.87801265716553
+  },
+  {
+    "height" : 512,
+    "dit_forwards" : 2,
+    "seconds" : 0.3749079704284668,
+    "width" : 512,
+    "dit_ms_per_call" : 187.4539852142334,
+    "file" : "0177.png"
+  },
+  {
+    "file" : "0178.png",
+    "seconds" : 0.37907099723815918,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 189.53549861907959,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.71402740478516,
+    "height" : 512,
+    "file" : "0179.png",
+    "seconds" : 0.37742805480957031,
+    "width" : 512
+  },
+  {
+    "dit_ms_per_call" : 188.34853172302246,
+    "height" : 512,
+    "seconds" : 0.37669706344604492,
+    "file" : "0180.png",
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.26651573181152,
+    "file" : "0181.png",
+    "height" : 512,
+    "seconds" : 0.37653303146362305,
+    "width" : 512
+  },
+  {
+    "width" : 512,
+    "dit_ms_per_call" : 187.40397691726685,
+    "seconds" : 0.37480795383453369,
+    "height" : 512,
+    "file" : "0182.png",
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0183.png",
+    "dit_forwards" : 2,
+    "seconds" : 0.3757699728012085,
+    "dit_ms_per_call" : 187.88498640060425,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "height" : 512,
+    "file" : "0184.png",
+    "dit_ms_per_call" : 188.37350606918335,
+    "width" : 512,
+    "seconds" : 0.3767470121383667
+  },
+  {
+    "file" : "0185.png",
+    "seconds" : 0.37752294540405273,
+    "dit_ms_per_call" : 188.76147270202637,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37718403339385986,
+    "dit_ms_per_call" : 188.59201669692993,
+    "file" : "0186.png",
+    "height" : 512,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "file" : "0187.png",
+    "height" : 512,
+    "width" : 512,
+    "seconds" : 0.37666702270507812,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 188.33351135253906
+  },
+  {
+    "file" : "0188.png",
+    "seconds" : 0.37544107437133789,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.72053718566895,
+    "height" : 512,
+    "width" : 512
+  },
+  {
+    "dit_ms_per_call" : 188.00652027130127,
+    "file" : "0189.png",
+    "seconds" : 0.37601304054260254,
+    "height" : 512,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "dit_ms_per_call" : 187.04897165298462,
+    "seconds" : 0.37409794330596924,
+    "dit_forwards" : 2,
+    "file" : "0190.png",
+    "width" : 512,
+    "height" : 512
+  },
+  {
+    "seconds" : 0.37468802928924561,
+    "dit_forwards" : 2,
+    "dit_ms_per_call" : 187.3440146446228,
+    "height" : 512,
+    "width" : 512,
+    "file" : "0191.png"
+  },
+  {
+    "dit_ms_per_call" : 187.96050548553467,
+    "file" : "0192.png",
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37592101097106934,
+    "dit_forwards" : 2
+  },
+  {
+    "file" : "0193.png",
+    "width" : 512,
+    "seconds" : 0.37651002407073975,
+    "dit_ms_per_call" : 188.25501203536987,
+    "dit_forwards" : 2,
+    "height" : 512
+  },
+  {
+    "dit_forwards" : 2,
+    "file" : "0194.png",
+    "width" : 512,
+    "height" : 512,
+    "seconds" : 0.37725996971130371,
+    "dit_ms_per_call" : 188.62998485565186
+  },
+  {
+    "seconds" : 0.37729191780090332,
+    "file" : "0195.png",
+    "height" : 512,
+    "dit_ms_per_call" : 188.64595890045166,
+    "dit_forwards" : 2,
+    "width" : 512
+  },
+  {
+    "seconds" : 0.37678205966949463,
+    "height" : 512,
+    "file" : "0196.png",
+    "dit_ms_per_call" : 188.39102983474731,
+    "width" : 512,
+    "dit_forwards" : 2
+  },
+  {
+    "width" : 512,
+    "seconds" : 0.37596094608306885,
+    "height" : 512,
+    "file" : "0197.png",
+    "dit_ms_per_call" : 187.98047304153442,
+    "dit_forwards" : 2
+  },
+  {
+    "dit_ms_per_call" : 187.08449602127075,
+    "height" : 512,
+    "seconds" : 0.3741689920425415,
+    "dit_forwards" : 2,
+    "width" : 512,
+    "file" : "0198.png"
+  },
+  {
+    "height" : 512,
+    "file" : "0199.png",
+    "dit_ms_per_call" : 187.14046478271484,
+    "seconds" : 0.37428092956542969,
+    "width" : 512,
+    "dit_forwards" : 2
+  }
+]

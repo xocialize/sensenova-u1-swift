@@ -26,6 +26,14 @@ public struct T2IParams: Sendable {
     public var cfgInterval: (Float, Float) = (0.0, 1.0)
     public var tEps: Float = 0.02
     public var seed: UInt64 = 42
+    /// Model t the loop starts at when an init image is given (0 = pure noise,
+    /// the default and the only meaningful value without one; 1 = clean image).
+    /// FluxSR's T_L = 0.35 noise fraction is `startT = 0.65` here.
+    public var startT: Float = 0
+    /// With an init image: mix noise in at `startT` (SDEdit, on-distribution
+    /// for an untrained prior) or feed the clean image as the state (the
+    /// FluxSR / HYPIR one-step entry a trained restorer expects).
+    public var initNoiseMix = true
     public init() {}
 }
 
@@ -77,14 +85,55 @@ public final class NEOChatModel: Module {
 
     /// `_apply_time_schedule` with the runtime-forced "standard" branch:
     /// σ = 1−t; σ′ = s·σ / (1 + (s−1)·σ); t′ = 1−σ′.
-    public func shiftedTimesteps(numSteps: Int, shift: Float, enable: Bool) -> [Float] {
-        let linear = (0 ... numSteps).map { Float($0) / Float(numSteps) }
+    ///
+    /// `startT` (model t, 0 = pure noise, 1 = clean image) begins the schedule
+    /// part-way for an init-image run: the linear grid runs from the t whose
+    /// shifted value is `startT` up to 1, so the step spacing is the same shape
+    /// a full schedule has over that interval. `startT == 0` is the full
+    /// schedule, bit-identical to the pre-`startT` form (0 + 1·x == x).
+    public func shiftedTimesteps(
+        numSteps: Int, shift: Float, enable: Bool, startT: Float = 0
+    ) -> [Float] {
+        Self.timestepSchedule(numSteps: numSteps, shift: shift, enable: enable, startT: startT)
+    }
+
+    public static func timestepSchedule(
+        numSteps: Int, shift: Float, enable: Bool, startT: Float = 0
+    ) -> [Float] {
+        let t0: Float = startT == 0 ? 0 : unshiftedT(startT, shift: shift, enable: enable)
+        let linear = (0 ... numSteps).map { t0 + (1 - t0) * (Float($0) / Float(numSteps)) }
         guard enable else { return linear }
         return linear.map { t in
             let sigma = 1 - t
             let shifted = shift * sigma / (1 + (shift - 1) * sigma)
             return 1 - shifted
         }
+    }
+
+    /// Inverse of the shift: the linear t whose shifted value is `t`.
+    /// σ′ = s·σ / (1 + (s−1)·σ)  ⇔  σ = σ′ / (s − (s−1)·σ′).
+    public static func unshiftedT(_ t: Float, shift: Float, enable: Bool) -> Float {
+        guard enable else { return t }
+        let shiftedSigma = 1 - t
+        let sigma = shiftedSigma / (shift - (shift - 1) * shiftedSigma)
+        return 1 - sigma
+    }
+
+    /// The state the denoise loop starts from. With no `initImage` it is the
+    /// (σ-scaled) noise. With one, at `startT`: the SDEdit mix
+    /// t·x + (1−t)·noise (`initNoiseMix`), or the image itself (the FluxSR /
+    /// HYPIR entry, which feeds a clean x as if it sat at t).
+    public static func initialState(
+        noise: MLXArray, initImage: MLXArray?, startT: Float, mix: Bool,
+        height: Int, width: Int
+    ) -> MLXArray {
+        guard let x = initImage else { return noise }
+        precondition(
+            x.shape == [1, 3, height, width],
+            "initImage shape \(x.shape) != [1, 3, \(height), \(width)]")
+        guard mix else { return x.asType(.bfloat16) }
+        let mixed = startT * x.asType(.float32) + (1 - startT) * noise.asType(.float32)
+        return mixed.asType(.bfloat16)
     }
 
     /// resolution-scaled initial-noise σ: min(√(L/base), max) — merge² cancels
@@ -181,6 +230,7 @@ public final class NEOChatModel: Module {
         height: Int,
         params: T2IParams = T2IParams(),
         injectedNoise: MLXArray? = nil,
+        initImage: MLXArray? = nil,
         onStep: ((Int, Int) -> Void)? = nil
     ) throws -> MLXArray {
         let needsCFG = params.cfgScale > 1 && uncondIds != nil
@@ -191,7 +241,7 @@ public final class NEOChatModel: Module {
             prefixUncond: prefixUncond,
             uncondImageT: needsCFG ? Int32(uncondIds!.count) : 0,
             needsCFG: needsCFG, width: width, height: height, params: params,
-            injectedNoise: injectedNoise, onStep: onStep)
+            injectedNoise: injectedNoise, initImage: initImage, onStep: onStep)
     }
 
     /// The shared t2i denoise loop (non-think and think paths).
@@ -208,6 +258,7 @@ public final class NEOChatModel: Module {
         height: Int,
         params: T2IParams,
         injectedNoise: MLXArray?,
+        initImage: MLXArray? = nil,
         onStep: ((Int, Int) -> Void)?
     ) throws -> MLXArray {
         let px = config.pixelsPerToken           // 32
@@ -226,19 +277,23 @@ public final class NEOChatModel: Module {
         let idxCond = imageIndexes(t: condImageT)
         let idxUncond = needsCFG ? imageIndexes(t: uncondImageT) : idxCond
 
-        // -- init noise --
+        // -- init noise (and, for an init-image run, the partial-t start) --
         let sigma = noiseScale(tokenH: tokenH, tokenW: tokenW)
-        var image: MLXArray
-        if let noise = injectedNoise {
-            image = noise
+        let noise: MLXArray
+        if let injected = injectedNoise {
+            noise = injected
         } else {
             MLXRandom.seed(params.seed)
-            image = (MLXRandom.normal([1, 3, height, width]) * sigma).asType(.bfloat16)
+            noise = (MLXRandom.normal([1, 3, height, width]) * sigma).asType(.bfloat16)
         }
+        let startT: Float = initImage == nil ? 0 : params.startT
+        var image = Self.initialState(
+            noise: noise, initImage: initImage, startT: startT, mix: params.initNoiseMix,
+            height: height, width: width)
 
         let timesteps = shiftedTimesteps(
             numSteps: params.numSteps, shift: params.timestepShift,
-            enable: params.enableTimestepShift)
+            enable: params.enableTimestepShift, startT: startT)
 
         // sigma is loop-invariant, so the noise-scale embedding is too — compute
         // it once at the SAME L-row width the reference uses. (Computing it on a

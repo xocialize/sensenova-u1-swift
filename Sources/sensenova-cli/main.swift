@@ -244,6 +244,88 @@ if let outDir = arg("convert") {
 print("[cli] loaded in \(String(format: "%.1f", Date().timeIntervalSince(t0)))s")
 print("[cli] resident after load: \(GPU.activeMemory / (1 << 20)) MB active, peak \(GPU.peakMemory / (1 << 20)) MB")
 
+// --- SR probe mode (SENSENOVA-SR-EVAL §7 step 1):
+//   --init-dir DIR --out-dir DIR [--scale 4] [--start-t 0.7] [--init-no-noise] [--ref-init]
+//   [--prompt "..."] [--steps N] [--cfg 1] [--suffix S] [--only-low] [--limit N] [--skip-existing]
+//   [--timing f.json]
+// Every PNG in --init-dir is Lanczos-upsampled by --scale, entered as the denoise state at
+// --start-t (model t: 0 = noise, 1 = image; the SDEdit mix with the seeded noise, or the clean
+// image with --init-no-noise), denoised in --steps steps and written to --out-dir as an 8-bit
+// PNG. --ref-init also passes the LR through the und stream as an edit reference, with --prompt
+// as the instruction (arm b); without it --prompt is a plain T2I prompt (arm a). --suffix S
+// renames bench inputs `<name>__<regime>__low.png` to `…__S.png` for `vosrgate score`.
+if let initDir = arg("init-dir") {
+    guard let outDirPath = arg("out-dir") else { print("[probe] --out-dir required"); exit(2) }
+    let outDir = URL(fileURLWithPath: outDirPath)
+    try FileManager.default.createDirectory(at: outDir, withIntermediateDirectories: true)
+    let scale = Int(arg("scale") ?? "4")!
+    params.startT = Float(arg("start-t") ?? "0.7")!
+    params.initNoiseMix = !flag("init-no-noise")
+    params.cfgScale = Float(arg("cfg") ?? "1.0")!
+    let refInit = flag("ref-init")
+    let suffix = arg("suffix")
+    let limit = Int(arg("limit") ?? "0")!
+    var files = try FileManager.default.contentsOfDirectory(
+        at: URL(fileURLWithPath: initDir), includingPropertiesForKeys: nil)
+        .filter { $0.pathExtension.lowercased() == "png" }
+        .sorted { $0.lastPathComponent < $1.lastPathComponent }
+    if flag("only-low") { files = files.filter { $0.lastPathComponent.hasSuffix("__low.png") } }
+    if let listPath = arg("list") {
+        let keep = Set(try String(contentsOfFile: listPath, encoding: .utf8)
+            .split(separator: "\n").map { String($0).trimmingCharacters(in: .whitespaces) })
+        files = files.filter { keep.contains($0.deletingPathExtension().lastPathComponent) }
+    }
+    if limit > 0 { files = Array(files.prefix(limit)) }
+    let tok = try await SenseNovaTokenizer.load(from: weights)
+    let prompt = arg("prompt") ?? "A sharp, high-resolution photograph."
+    var timing: [[String: Any]] = []
+    print("[probe] \(files.count) inputs · x\(scale) · start-t \(params.startT) · noise-mix \(params.initNoiseMix) · steps \(params.numSteps) · cfg \(params.cfgScale) · ref-init \(refInit) · seed \(params.seed)")
+    print("[probe] prompt: \(prompt)")
+    for (i, url) in files.enumerated() {
+        var outName = url.lastPathComponent
+        if let suffix, outName.hasSuffix("__low.png") {
+            outName = String(outName.dropLast("__low.png".count)) + "__\(suffix).png"
+        }
+        let outURL = outDir.appendingPathComponent(outName)
+        if flag("skip-existing"), FileManager.default.fileExists(atPath: outURL.path) { continue }
+        let t1 = Date()
+        let x = try SenseNovaImageIO.loadGenImage(url: url, scale: scale)
+        let (h, w) = (x.dim(2), x.dim(3))
+        guard h % 32 == 0, w % 32 == 0 else {
+            print("[probe] skip \(outName): \(w)x\(h) is not a multiple of 32")
+            continue
+        }
+        let img: MLXArray
+        if refInit {
+            let ref = try SenseNovaImageIO.loadEditImage(url: url)
+            let cond = try tok.encode(
+                Conversation.editCondPrompt(prompt, imageTokenCounts: [ref.tokenCount]))
+            img = try model.it2iGenerate(
+                condIds: cond, imgCondIds: nil, uncondIds: nil, images: [ref],
+                width: w, height: h, params: params, imgCfgScale: 1.0, initImage: x)
+        } else {
+            let cond = tok.t2iIDs(prompt: prompt).cond
+            img = try model.t2iGenerate(
+                condIds: cond, uncondIds: nil, width: w, height: h, params: params, initImage: x)
+        }
+        eval(img)
+        try SenseNovaImageIO.savePNG(img, to: outURL)
+        let dt = Date().timeIntervalSince(t1)
+        timing.append([
+            "file": outName, "seconds": dt, "dit_forwards": params.numSteps,
+            "dit_ms_per_call": dt * 1000 / Double(params.numSteps), "width": w, "height": h,
+        ])
+        print(String(format: "[probe] %d/%d %@ %dx%d %.2fs  active %d MB", i + 1, files.count, outName, w, h, dt, GPU.activeMemory >> 20))
+        Memory.clearCache()
+    }
+    if let tp = arg("timing") {
+        try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted])
+            .write(to: URL(fileURLWithPath: tp))
+    }
+    print("[probe] done: \(timing.count) written · peak memory \(GPU.peakMemory >> 20) MB")
+    exit(0)
+}
+
 t0 = Date()
 // --- think-mode T2I: AR reasoning block, then denoise ---
 if flag("think"), let prompt = arg("prompt"), editImages.isEmpty {

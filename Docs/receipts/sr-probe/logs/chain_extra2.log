@@ -1,0 +1,81 @@
+=== U1-a-t0.9-s1-nonoise bench (27 × 512² → 2048²)  09:02:30  load 5.01 4.76 4.25
+[probe] done: 27 written · peak memory 20140 MB
+=== U1-a-t0.9-s1-nonoise SA-Text lq3 (200 × 128² → 512²)  09:03:24  load 5.27 4.81 4.30
+[probe] done: 200 written · peak memory 19254 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.9-s1-nonoise_lq3.json
+=== U1-a-t0.9-s1-nonoise SA-Text lq1 (200 × 128² → 512²)  09:04:26  load 4.97 4.83 4.34
+[probe] done: 200 written · peak memory 19254 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.9-s1-nonoise_lq1.json
+=== U1-a-t0.9-s1-nonoise ScreenSR ×1  09:05:29  load 4.89 4.88 4.39
+[probe] done: 4 written · peak memory 19254 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1-nonoise_x1.json
+=== U1-a-t0.9-s1-nonoise ScreenSR ×2  09:05:32  load 4.90 4.88 4.39
+[probe] done: 4 written · peak memory 19653 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1-nonoise_x2.json
+=== U1-a-t0.9-s1-nonoise ScreenSR ×4  09:05:35  load 4.99 4.90 4.40
+[probe] done: 4 written · peak memory 20140 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.9-s1-nonoise_x4.json
+=== U1-b-t0.7-s1-nonoise bench (27 × 512² → 2048²)  09:05:45  load 5.13 4.93 4.42
+[probe] done: 27 written · peak memory 20193 MB
+=== U1-b-t0.7-s1-nonoise SA-Text lq3 (200 × 128² → 512²)  09:06:42  load 4.29 4.73 4.37
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.7-s1-nonoise_lq3.json
+=== U1-b-t0.7-s1-nonoise SA-Text lq1 (200 × 128² → 512²)  09:08:03  load 5.91 5.23 4.60
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.7-s1-nonoise_lq1.json
+=== U1-b-t0.7-s1-nonoise ScreenSR ×1  09:09:26  load 5.80 5.24 4.65
+[probe] done: 4 written · peak memory 19488 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.7-s1-nonoise_x1.json
+=== U1-b-t0.7-s1-nonoise ScreenSR ×2  09:09:29  load 5.80 5.24 4.65
+[probe] done: 4 written · peak memory 19708 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.7-s1-nonoise_x2.json
+=== U1-b-t0.7-s1-nonoise ScreenSR ×4  09:09:34  load 5.42 5.17 4.63
+[probe] done: 4 written · peak memory 20193 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.7-s1-nonoise_x4.json
+=== U1-b-t0.9-s1-nonoise bench (27 × 512² → 2048²)  09:09:44  load 5.05 5.10 4.61
+[probe] done: 27 written · peak memory 20193 MB
+=== U1-b-t0.9-s1-nonoise SA-Text lq3 (200 × 128² → 512²)  09:10:41  load 4.64 4.94 4.58
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.9-s1-nonoise_lq3.json
+=== U1-b-t0.9-s1-nonoise SA-Text lq1 (200 × 128² → 512²)  09:12:01  load 4.19 4.68 4.51
+[probe] done: 200 written · peak memory 19488 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-b-t0.9-s1-nonoise_lq1.json
+=== U1-b-t0.9-s1-nonoise ScreenSR ×1  09:13:27  load 4.37 4.54 4.46
+[probe] done: 4 written · peak memory 19488 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1-nonoise_x1.json
+=== U1-b-t0.9-s1-nonoise ScreenSR ×2  09:13:30  load 4.34 4.53 4.46
+[probe] done: 4 written · peak memory 19708 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1-nonoise_x2.json
+=== U1-b-t0.9-s1-nonoise ScreenSR ×4  09:13:35  load 4.34 4.53 4.46
+[probe] done: 4 written · peak memory 20193 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-b-t0.9-s1-nonoise_x4.json
+=== U1-a-t0.5-s1-nonoise bench (27 × 512² → 2048²)  09:13:45  load 4.18 4.49 4.45
+[probe] done: 27 written · peak memory 20140 MB
+=== U1-a-t0.5-s1-nonoise SA-Text lq3 (200 × 128² → 512²)  09:14:38  load 2.97 4.10 4.31
+[probe] done: 200 written · peak memory 19254 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.5-s1-nonoise_lq3.json
+=== U1-a-t0.5-s1-nonoise SA-Text lq1 (200 × 128² → 512²)  09:15:39  load 4.32 4.30 4.37
+[probe] done: 200 written · peak memory 19254 MB
+  ocr: 200 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/satext_U1-a-t0.5-s1-nonoise_lq1.json
+=== U1-a-t0.5-s1-nonoise ScreenSR ×1  09:16:40  load 3.53 4.11 4.29
+[probe] done: 4 written · peak memory 19254 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.5-s1-nonoise_x1.json
+=== U1-a-t0.5-s1-nonoise ScreenSR ×2  09:16:43  load 3.53 4.11 4.29
+[probe] done: 4 written · peak memory 19653 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.5-s1-nonoise_x2.json
+=== U1-a-t0.5-s1-nonoise ScreenSR ×4  09:16:47  load 3.56 4.11 4.29
+[probe] done: 4 written · peak memory 20140 MB
+  ocr: 4 files → /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/sr-probe/ocr/screensr_U1-a-t0.5-s1-nonoise_x4.json
+=== score bench (SSIMULACRA2 / gradient / FidelityGuard / octaves)  09:16:57  load 3.09 3.99 4.24
+  Unilever_photo/jpeg/lanczos-mps  FR -11.69  grad 1.825  sigma 96.7  DC psnr 43.2 ssim 0.9987 worst 0.9945  oct 0.882/0.879/0.932/0.981
+  Unilever_photo/jpeg/REFERENCE  FR 100.00  grad 3.382  sigma 97.8  DC psnr 32.3 ssim 0.9485 worst 0.8863  oct nan/nan/nan/nan
+=== nrscore bench  09:34:50  load 3.57 3.59 3.86
+  dump/Unilever_photo__reference.png  NR 0.9089
+[nr] 495 scores → bench/nr.json
+=== analyze  09:36:35  load 3.86 3.63 3.83
+  logs/timing_U1-b-t0.9-s1_screensr_x4.json                              n=   4  median   2.11 s/image · forward   2115 ms × 1
+  mlxengine-forge/Tools/vosr-gates/20260926/timing_corpus.json           n=  27  median  34.80 s/image · forward    692 ms × 25
+  mlxengine-forge/Tools/vosr-gates/20260926/timing_satext3.json          n=1000  median   1.19 s/image · forward    711 ms × 1
+  mlxengine-image/WIP/iris-3b-oracle/gates/logs/timing_corpus.json       n=  27  median   7.37 s/image · forward    815 ms × 9
+  mlxengine-image/WIP/iris-3b-oracle/gates/logs/timing_satext3.json      n=1000  median   0.82 s/image · forward    813 ms × 1
+=== EXTRA DONE  09:36:36  load 3.63 3.59 3.82

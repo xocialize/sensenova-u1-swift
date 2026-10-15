@@ -1,0 +1,11 @@
+# Generated images (≈2 GB; reproducible with run_probe.sh + run_probe_extra.sh) and input links.
+# Kept in git: scripts, README, analysis.txt, logs/, ocr/, bench/score.csv, bench/nr.json, eyeball/.
+bench/dump/
+satext/lq1/
+satext/lq3/
+satext/hq
+satext/gt.json
+satext/out/
+screensr/lr/
+screensr/hr/
+screensr/out/

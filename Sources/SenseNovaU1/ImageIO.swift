@@ -11,10 +11,12 @@
 // (input preprocessing, upstream of all weights). If it ever matters,
 // qwen25vl-mlx-swift ships parity-locked HF-style resampling to borrow.
 
+import Accelerate
 import CoreGraphics
 import Foundation
 import ImageIO
 import MLX
+import UniformTypeIdentifiers
 
 public enum SenseNovaImageIO {
 
@@ -105,5 +107,90 @@ public enum SenseNovaImageIO {
             .transposed(0, 2, 4, 1, 3, 5)
             .reshaped([gh * gw, 3 * patchSize * patchSize])
         return EditImage(pixelValues: flat, gridH: gh, gridW: gw)
+    }
+
+    // MARK: - generation-space images (the init-image / SR-probe path)
+
+    /// Decode an image file into the generation space: (1, 3, H, W) fp32 in
+    /// [-1, 1] (`x·0.5 + 0.5` → RGB), RGBA drawn over white at its native size
+    /// (a 1:1 draw, no resampling). `scale > 1` Lanczos-upsamples by that
+    /// integer factor with vImage — centre-aligned, unlike a scaled CGContext
+    /// draw, which shifts content by up to 0.26 px (AB-L-0239).
+    public static func loadGenImage(url: URL, scale: Int = 1) throws -> MLXArray {
+        guard let source = CGImageSourceCreateWithURL(url as CFURL, nil),
+              let cg = CGImageSourceCreateImageAtIndex(source, 0, nil)
+        else { throw SenseNovaError.badConfig("cannot read image at \(url.path)") }
+        let (w0, h0) = (cg.width, cg.height)
+        var rgba = try rgba8OverWhite(cg)
+        var (w, h) = (w0, h0)
+        if scale > 1 {
+            (w, h) = (w0 * scale, h0 * scale)
+            var dst = [UInt8](repeating: 0, count: w * h * 4)
+            let err: vImage_Error = rgba.withUnsafeMutableBytes { sp in
+                dst.withUnsafeMutableBytes { dp in
+                    var src = vImage_Buffer(
+                        data: sp.baseAddress, height: vImagePixelCount(h0),
+                        width: vImagePixelCount(w0), rowBytes: w0 * 4)
+                    var out = vImage_Buffer(
+                        data: dp.baseAddress, height: vImagePixelCount(h),
+                        width: vImagePixelCount(w), rowBytes: w * 4)
+                    return vImageScale_ARGB8888(&src, &out, nil, vImage_Flags(kvImageHighQualityResampling))
+                }
+            }
+            guard err == kvImageNoError else {
+                throw SenseNovaError.badConfig("vImageScale failed: \(err)")
+            }
+            rgba = dst
+        }
+        let n = w * h
+        var chw = [Float](repeating: 0, count: 3 * n)
+        for c in 0 ..< 3 {
+            for i in 0 ..< n { chw[c * n + i] = Float(rgba[i * 4 + c]) / 127.5 - 1 }
+        }
+        return MLXArray(chw, [1, 3, h, w])
+    }
+
+    /// Write a generation-space image (1, 3, H, W) in [-1, 1] as an 8-bit RGB
+    /// PNG (rounded, clamped).
+    public static func savePNG(_ image: MLXArray, to url: URL) throws {
+        precondition(image.ndim == 4 && image.dim(0) == 1 && image.dim(1) == 3, "expected (1, 3, H, W)")
+        let (h, w) = (image.dim(2), image.dim(3))
+        let n = w * h
+        let px = clip((image.asType(.float32) * 0.5 + 0.5) * 255 + 0.5, min: 0, max: 255)
+        let chw = px.reshaped([3 * n]).asArray(Float.self)
+        var rgba = [UInt8](repeating: 255, count: n * 4)
+        for i in 0 ..< n {
+            rgba[i * 4] = UInt8(chw[i])
+            rgba[i * 4 + 1] = UInt8(chw[n + i])
+            rgba[i * 4 + 2] = UInt8(chw[2 * n + i])
+        }
+        guard let provider = CGDataProvider(data: Data(rgba) as CFData),
+              let cg = CGImage(
+                width: w, height: h, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: w * 4,
+                space: CGColorSpace(name: CGColorSpace.sRGB)!,
+                bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.noneSkipLast.rawValue),
+                provider: provider, decode: nil, shouldInterpolate: false, intent: .defaultIntent),
+              let dest = CGImageDestinationCreateWithURL(url as CFURL, UTType.png.identifier as CFString, 1, nil)
+        else { throw SenseNovaError.badConfig("cannot create PNG at \(url.path)") }
+        CGImageDestinationAddImage(dest, cg, nil)
+        guard CGImageDestinationFinalize(dest) else {
+            throw SenseNovaError.badConfig("cannot write PNG at \(url.path)")
+        }
+    }
+
+    /// RGBA8 bytes of `cg` drawn over white at its own size, row 0 = top.
+    static func rgba8OverWhite(_ cg: CGImage) throws -> [UInt8] {
+        let (w, h) = (cg.width, cg.height)
+        guard let ctx = CGContext(
+            data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
+            space: CGColorSpace(name: CGColorSpace.sRGB)!,
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+        else { throw SenseNovaError.badConfig("cannot create bitmap context") }
+        ctx.setFillColor(CGColor(red: 1, green: 1, blue: 1, alpha: 1))
+        ctx.fill(CGRect(x: 0, y: 0, width: w, height: h))
+        ctx.interpolationQuality = .none
+        ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
+        guard let data = ctx.data else { throw SenseNovaError.badConfig("no bitmap data") }
+        return Array(UnsafeBufferPointer(start: data.bindMemory(to: UInt8.self, capacity: w * h * 4), count: w * h * 4))
     }
 }
