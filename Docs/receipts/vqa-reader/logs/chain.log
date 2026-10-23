@@ -1,0 +1,15 @@
+=== satext_lq3 (200 images, max-tokens 256)  11:09:17
+[vqa] wrote /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/vqa-reader/reads/u1_satext_lq3.json (200 files) · peak memory 19268 MB
+=== satext_lq1 (200 images, max-tokens 256)  11:10:06
+[vqa] wrote /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/vqa-reader/reads/u1_satext_lq1.json (200 files) · peak memory 19268 MB
+=== satext_hq (200 images, max-tokens 256)  11:10:53
+[vqa] wrote /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/vqa-reader/reads/u1_satext_hq.json (200 files) · peak memory 19268 MB
+=== screensr_lr (4 images, max-tokens 1024)  11:12:24
+[vqa] wrote /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/vqa-reader/reads/u1_screensr_lr.json (4 files) · peak memory 19268 MB
+=== screensr_hr (4 images, max-tokens 1024)  11:12:59
+[vqa] wrote /Volumes/Satechi/Development/mlxengine-image/PROD/sensenova-u1-swift/Docs/receipts/vqa-reader/reads/u1_screensr_hr.json (4 files) · peak memory 19268 MB
+=== analyze  11:13:35
+  satext_hq      n= 200  median   0.27 s/image  tokens median     5  max   256
+  screensr_lr    n=   4  median   4.37 s/image  tokens median   177  max  1024
+  screensr_hr    n=   4  median   4.50 s/image  tokens median   185  max  1024
+=== READER DONE  11:13:35

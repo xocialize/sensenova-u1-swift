@@ -1,0 +1,57 @@
+
+── SA-Text lq3 · words vs the dataset transcriptions (n = 200 images) ──
+  reader                              img-F1       P       R  matched   read  truth  INVENTED  empty
+  Vision (all lines)                  0.1064  0.6852  0.0920       37     54    402        17    162
+  Vision conf ≥ 1 (certain only)      0.1060  0.8182  0.0896       36     44    402         8    171
+  U1 VQA (raw)                        0.2151  0.2271  0.1791       72    317    402       245    120
+  U1 VQA, repeats collapsed           0.2154  0.4615  0.1791       72    156    402        84    120
+  ENSEMBLE: Vision ∩ U1 (agreed words)  0.0962  0.9697  0.0796       32     33    402         1    177
+  ENSEMBLE: Vision certain ∪ agreed   0.1060  0.8182  0.0896       36     44    402         8    171
+
+── SA-Text lq3: images where Vision read ≥1 confident word not in the truth: 7 ──
+  U1 repeats Vision's wrong words: 1   U1 reads truth words on those images: 13   U1 abstains (reads nothing): 0 images
+  exact-image reads: both 15 · Vision only 2 · U1 only 20 · neither 163
+
+── SA-Text lq1 · words vs the dataset transcriptions (n = 200 images) ──
+  reader                              img-F1       P       R  matched   read  truth  INVENTED  empty
+  Vision (all lines)                  0.2306  0.6942  0.2090       84    121    402        37    121
+  Vision conf ≥ 1 (certain only)      0.2325  0.7345  0.2065       83    113    402        30    124
+  U1 VQA (raw)                        0.3761  0.5915  0.3134      126    213    402        87     66
+  U1 VQA, repeats collapsed           0.3748  0.6010  0.3109      125    208    402        83     66
+  ENSEMBLE: Vision ∩ U1 (agreed words)  0.2236  0.9750  0.1940       78     80    402         2    145
+  ENSEMBLE: Vision certain ∪ agreed   0.2325  0.7345  0.2065       83    113    402        30    124
+
+── SA-Text lq1: images where Vision read ≥1 confident word not in the truth: 26 ──
+  U1 repeats Vision's wrong words: 2   U1 reads truth words on those images: 30   U1 abstains (reads nothing): 0 images
+  exact-image reads: both 31 · Vision only 1 · U1 only 26 · neither 142
+
+── SA-Text hq · words vs the dataset transcriptions (n = 200 images) ──
+  reader                              img-F1       P       R  matched   read  truth  INVENTED  empty
+  Vision (all lines)                  0.5455  0.7352  0.5871      236    321    402        85     48
+  Vision conf ≥ 1 (certain only)      0.5523  0.7763  0.5871      236    304    402        68     52
+  U1 VQA (raw)                        0.7257  0.3344  0.7811      314    939    402       625      4
+  U1 VQA, repeats collapsed           0.7279  0.6851  0.7413      298    435    402       137      4
+  ENSEMBLE: Vision ∩ U1 (agreed words)  0.5237  0.9767  0.5224      210    215    402         5     81
+  ENSEMBLE: Vision certain ∪ agreed   0.5523  0.7763  0.5871      236    304    402        68     52
+
+── SA-Text hq: images where Vision read ≥1 confident word not in the truth: 46 ──
+  U1 repeats Vision's wrong words: 5   U1 reads truth words on those images: 96   U1 abstains (reads nothing): 0 images
+  exact-image reads: both 73 · Vision only 11 · U1 only 45 · neither 71
+
+── ScreenSR · per page: words read / matched against the HR page's VISION read (the §11 truth) ──
+  page    truth | Vision LR read  match     F1 | U1 LR read  match     F1  INVENTED | U1 HR read  match
+  001         0 |              0      0    nan |          0      0    nan         0 |          0      0
+  002         0 |              0      0    nan |          0      0    nan         0 |          0      0
+  010       269 |            269    252  0.937 |        267    198  0.739        69 |        280    211
+  095       126 |             29      9  0.116 |        835     35  0.073       800 |        791     52
+
+  Chinese pages (001, 002): Vision HR read has no Latin tokens; U1's HR read, raw lines:
+    001: 0 lines · 
+    002: 0 lines · 
+
+── timing (MLX, 8step-v2 int8, M5 Max; Vision timings from VOSR-EVAL: first assess 25 s, then 0.05–0.18 s per page) ──
+  satext_lq3     n= 200  median   0.17 s/image  tokens median     1  max   256
+  satext_lq1     n= 200  median   0.20 s/image  tokens median     2  max    21
+  satext_hq      n= 200  median   0.27 s/image  tokens median     5  max   256
+  screensr_lr    n=   4  median   4.37 s/image  tokens median   177  max  1024
+  screensr_hr    n=   4  median   4.50 s/image  tokens median   185  max  1024

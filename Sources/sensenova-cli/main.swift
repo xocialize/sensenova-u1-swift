@@ -133,6 +133,68 @@ if !diffPaths.isEmpty {
     exit(1)
 }
 
+// --- batch VQA transcription: --vqa-dir DIR --out reads.json [--vqa-prompt "..."] [--max-tokens N]
+//     [--list ids.txt] [--limit N] [--timing f.json]
+// Every PNG in DIR is read through the understanding stream with one fixed prompt; the answers are
+// written in the `vosrgate ocr` shape ({file: [{"text": line, "conf": 1}]}) so the OCR scorers apply
+// unchanged. One model load per directory. (SENSENOVA-SR-EVAL follow-up: U1 VQA vs Vision as the
+// text guard's reader.)
+if let vqaDir = arg("vqa-dir") {
+    let outJSON = URL(fileURLWithPath: arg("out") ?? "vqa_reads.json")
+    let prompt = arg("vqa-prompt")
+        ?? "Transcribe all the text in this image exactly as written, one line of the image per line of output. Do not describe the image. If there is no text, write NONE."
+    var files = try FileManager.default.contentsOfDirectory(
+        at: URL(fileURLWithPath: vqaDir), includingPropertiesForKeys: nil)
+        .filter { $0.pathExtension.lowercased() == "png" }
+        .sorted { $0.lastPathComponent < $1.lastPathComponent }
+    if let listPath = arg("list") {
+        let keep = Set(try String(contentsOfFile: listPath, encoding: .utf8)
+            .split(separator: "\n").map { String($0).trimmingCharacters(in: .whitespaces) })
+        files = files.filter { keep.contains($0.deletingPathExtension().lastPathComponent) }
+    }
+    if let n = Int(arg("limit") ?? "0"), n > 0 { files = Array(files.prefix(n)) }
+    let tok = try await SenseNovaTokenizer.load(from: weights)
+    let t0v = Date()
+    let model: NEOChatModel
+    if WeightLoading.isArtifact(weights) {
+        print("[cli] loading OFFLINE ARTIFACT ...")
+        model = try WeightLoading.loadArtifact(from: weights)
+    } else {
+        print("[cli] loading model bf16 ...")
+        model = try WeightLoading.load(from: weights, dtype: .bfloat16)
+    }
+    print("[cli] loaded in \(String(format: "%.1f", Date().timeIntervalSince(t0v)))s")
+    var sampling = SamplingParams()
+    sampling.maxNewTokens = Int(arg("max-tokens") ?? "256")!
+    print("[vqa] \(files.count) images · prompt: \(prompt)")
+    var reads: [String: [[String: Any]]] = [:]
+    var timing: [[String: Any]] = []
+    for (i, url) in files.enumerated() {
+        let t1 = Date()
+        let image = try SenseNovaImageIO.loadEditImage(url: url)
+        let userMessage = try Conversation.expandImagePlaceholders(
+            prompt: "<image>\n" + prompt, imageTokenCounts: [image.tokenCount])
+        let ids = tok.encode(Conversation.vqaPrompt(userMessage: userMessage, think: false))
+        var count = 0
+        let answer = try model.chat(ids: ids, images: [image], params: sampling) { _ in count += 1 }
+        let (text, _) = Conversation.splitReasoning(tok.decode(answer))
+        let lines = text.split(separator: "\n").map { $0.trimmingCharacters(in: .whitespaces) }
+            .filter { !$0.isEmpty && $0.uppercased() != "NONE" }
+        reads[url.lastPathComponent] = lines.map { ["text": $0, "conf": 1] }
+        let dt = Date().timeIntervalSince(t1)
+        timing.append(["file": url.lastPathComponent, "seconds": dt, "tokens": count])
+        print(String(format: "[vqa] %d/%d %@ %.2fs %d tok: %@", i + 1, files.count, url.lastPathComponent, dt, count,
+                     lines.joined(separator: " | ").prefix(120).description))
+        Memory.clearCache()
+    }
+    try JSONSerialization.data(withJSONObject: reads, options: [.prettyPrinted, .sortedKeys]).write(to: outJSON)
+    if let tp = arg("timing") {
+        try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted]).write(to: URL(fileURLWithPath: tp))
+    }
+    print("[vqa] wrote \(outJSON.path) (\(reads.count) files) · peak memory \(GPU.peakMemory >> 20) MB")
+    exit(0)
+}
+
 // --- VQA mode: --vqa "question" [--edit-image img] → prints the answer ---
 if let question = arg("vqa") {
     let tok = try await SenseNovaTokenizer.load(from: weights)
