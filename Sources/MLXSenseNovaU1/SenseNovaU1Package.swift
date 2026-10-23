@@ -112,17 +112,88 @@ public enum SenseNovaVariant: String, Codable, Sendable, CaseIterable {
         + "apply pose from image 1 with reference from image 2"
 }
 
+/// The working set a configuration is declared for: a second footprint over
+/// the SAME artifact, charged through `FootprintConfigured`, and the request
+/// bounds `run()` enforces so that the declaration stays true.
+///
+/// The manifest's footprints are quant-keyed and sized for the native
+/// 2048²-class envelope, so a 16 GB Mac (≈ 12.7 GB budget) refuses the int4
+/// tier's 12.2 + 4.5 GB, although its 768² fill measures 12.51 GB. A window
+/// declares only what was measured: `footprint(for:)` is nil for every other
+/// variant, and `load()` refuses such a pairing.
+public enum SenseNovaWindow: String, Codable, Sendable, CaseIterable {
+    /// The native envelope: outputs and references up to the 2048²-class
+    /// buckets, multi-reference edits, either guidance axis. The manifest's
+    /// quant-keyed footprints apply.
+    case native
+
+    /// **The 16 GB Generative Fill window** (AB-D-0141, AB-T-0278), declared
+    /// for `8step-v2-4bit`: output ≤ 768² by area, one reference, scaled into
+    /// the same area, cfg-free (guidance 1, imageGuidance 1). VQA images are
+    /// scaled into it too.
+    ///
+    /// Measured with a 768² single-reference edit, 8 steps, cfg 1, the same to
+    /// the MiB on three machines: floor 11,230 MiB and peak 11,930 MiB on a
+    /// real 16 GB M1 Pro (AB-R-0602), 11,235 / 11,931 on the 24 GB M5 Pro
+    /// (AB-R-0551) and the M5 Max (AB-R-0537). Declared 11.8 GB resident +
+    /// 0.75 GB activation = 12.55 GB, under the 12.7 GB budget. On the 16 GB
+    /// Mac the process `phys_footprint` was 12.60 GB, swap grew 1.9 GB on the
+    /// first load only, and a fill took 41–43 s warm (5.1–5.4 s/step).
+    ///
+    /// 1024² peaks 12,203 MiB, 973 MiB over the floor: declared honestly that
+    /// is 12.82 GB, over the budget, so the window refuses it rather than
+    /// declare it (it did run on the 16 GB Mac, with nothing else resident).
+    /// A second reference or a guidance branch adds a sequence per step, so
+    /// the window refuses those too.
+    case fill768 = "fill-768"
+
+    /// The window's side; its area is the most an output or reference may
+    /// cover. nil = native.
+    public var side: Int? {
+        switch self {
+        case .native: return nil
+        case .fill768: return 768
+        }
+    }
+
+    public var maxPixels: Int? { side.map { $0 * $0 } }
+
+    /// The declared footprint for `variant` under this window, or nil: native
+    /// (the manifest's quant-keyed footprints apply) or not measured.
+    public func footprint(for variant: SenseNovaVariant) -> QuantFootprint? {
+        switch (self, variant) {
+        case (.fill768, .fast4V2):
+            return QuantFootprint(
+                quant: .int4, residentBytes: 11_800_000_000,
+                peakActivationBytes: 750_000_000)
+        default:
+            return nil
+        }
+    }
+}
+
 /// Init-time configuration (C9): variant + explicit snapshot override + defaults.
 public struct SenseNovaU1Configuration:
-    PackageConfiguration, ModelStorable, QuantConfigured, WeightSourcing
+    PackageConfiguration, ModelStorable, QuantConfigured, FootprintConfigured, WeightSourcing
 {
     public var variant: SenseNovaVariant
+    /// The working set this configuration is declared for. `.native` (the
+    /// default) charges the manifest's quant-keyed footprint; `.fill768` is
+    /// the 16 GB fill tier's declaration over the same artifact.
+    public var window: SenseNovaWindow
     /// Explicit artifact root (config.json + model-*.safetensors). Empty =
     /// resolve from the model store, materializing from `variant.repo` first run.
     public var snapshotPath: String
     public var modelsRootDirectory: URL?
 
     public var quant: Quant { variant.quant }
+
+    /// The window's declared split, over the quant-keyed manifest footprint;
+    /// nil (native) falls through to it.
+    public var residentBytesHint: UInt64? { window.footprint(for: variant)?.residentBytes }
+    public var peakActivationBytesHint: UInt64? {
+        window.footprint(for: variant)?.peakActivationBytes
+    }
 
     /// Fresh-machine sources (MAT): one self-contained artifact per variant —
     /// quant-tiered configs exclude every byte their tier doesn't need by
@@ -167,16 +238,27 @@ public struct SenseNovaU1Configuration:
 
     public init(
         variant: SenseNovaVariant = .q8,
+        window: SenseNovaWindow = .native,
         snapshotPath: String = "",
         modelsRootDirectory: URL? = nil
     ) {
         self.variant = variant
+        self.window = window
         self.snapshotPath = snapshotPath
         self.modelsRootDirectory = modelsRootDirectory
     }
 
     private enum CodingKeys: String, CodingKey {
-        case variant, snapshotPath
+        case variant, window, snapshotPath
+    }
+
+    /// Configurations encoded before 0.6.0 carry no window: they are native.
+    public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        variant = try container.decode(SenseNovaVariant.self, forKey: .variant)
+        window = try container.decodeIfPresent(SenseNovaWindow.self, forKey: .window) ?? .native
+        snapshotPath = try container.decode(String.self, forKey: .snapshotPath)
+        modelsRootDirectory = nil
     }
 }
 
@@ -192,6 +274,10 @@ public enum SenseNovaU1PackageError: Error, LocalizedError {
     @available(*, deprecated, message: "no longer thrown: distill tiers serve imageAnalysis (AB-R-0490)")
     case distilledTierCannotAnalyze
     case metaDataOutOfRange(key: String, value: Double, range: ClosedRange<Double>)
+    /// A window with no declared footprint for this variant (`load()`).
+    case windowNotDeclared(window: SenseNovaWindow, variant: SenseNovaVariant)
+    /// A request outside the configuration's window (`run()`).
+    case outsideWindow(window: SenseNovaWindow, reason: String)
 
     public var errorDescription: String? {
         switch self {
@@ -211,6 +297,11 @@ public enum SenseNovaU1PackageError: Error, LocalizedError {
             return "No longer thrown: the 8step distill tiers serve imageAnalysis (AB-R-0490)."
         case .metaDataOutOfRange(let key, let value, let range):
             return "metaData \(key) = \(value) is outside \(range.lowerBound)...\(range.upperBound)."
+        case .windowNotDeclared(let window, let variant):
+            return "The \(window.rawValue) window declares no footprint for \(variant.rawValue) "
+                + "(a window is declared only where it was measured); use the native window."
+        case .outsideWindow(let window, let reason):
+            return "Outside the \(window.rawValue) window: \(reason)."
         }
     }
 }
@@ -275,6 +366,12 @@ public final class SenseNovaU1Package: ModelPackage {
                 // (768²: 11.9 / 19.7), i.e. the int4 tier's 1024² fill window sits
                 // under a 12.7 GB MLX limit (16 GB class) with 0.5 GB to spare.
                 // The declared activation stays the 2048² envelope's.
+                //
+                // 2026-10-22: the 16 GB fill tier is a second declaration over
+                // the int4 artifact, `SenseNovaWindow.fill768` (11.8 + 0.75 GB,
+                // measured on a real 16 GB Mac, AB-R-0602), charged through the
+                // configuration's `FootprintConfigured` hints. These quant-keyed
+                // footprints are unchanged; they stay the native envelope's.
                 footprints: [
                     QuantFootprint(
                         quant: .bf16, residentBytes: 35_500_000_000,
@@ -293,8 +390,9 @@ public final class SenseNovaU1Package: ModelPackage {
                 // (floor 11,235 MiB; 1024² edit peak 12,203, 2048² 12,569) at
                 // 2.1–2.4× the Max's step time, bit-identical across runs, and
                 // admitted as declared on that machine's 19.07 GB budget
-                // (Docs/receipts/int4-m5pro-24gb). Base chips are unmeasured,
-                // so the floor stays here until a base-chip receipt relaxes it.
+                // (Docs/receipts/int4-m5pro-24gb). A 16 GB M1 Pro matched it to
+                // the MiB as well (AB-R-0602). Base chips are unmeasured, so the
+                // floor stays here until a base-chip receipt relaxes it (AB-A-0181).
                 // DeviceProfile.current() reports .max on every host today, so
                 // this floor only bites once the engine detects real tiers.
                 chipFloor: .pro
@@ -364,12 +462,48 @@ public final class SenseNovaU1Package: ModelPackage {
         }
     }
 
+    /// The window's request bounds: the shape its footprint was measured on
+    /// (output area, one reference, no guidance branch). Native admits all.
+    nonisolated static func checkWindow(
+        _ window: SenseNovaWindow, width: Int, height: Int, references: Int,
+        guidance: Float, imageGuidance: Float
+    ) throws {
+        guard let side = window.side, let maxPixels = window.maxPixels else { return }
+        if width * height > maxPixels {
+            throw SenseNovaU1PackageError.outsideWindow(
+                window: window, reason: "\(width)×\(height) is larger than \(side)² by area")
+        }
+        if references > 1 {
+            throw SenseNovaU1PackageError.outsideWindow(
+                window: window, reason: "it takes one reference image, got \(references)")
+        }
+        if guidance != 1 || imageGuidance != 1 {
+            throw SenseNovaU1PackageError.outsideWindow(
+                window: window,
+                reason: "it runs cfg-free (guidance and imageGuidance 1), "
+                    + "got \(guidance) and \(imageGuidance)")
+        }
+    }
+
+    /// A reference or VQA image, scaled into the window's area when there is one.
+    private func loadImage(_ data: Data) throws -> EditImage {
+        guard let maxPixels = configuration.window.maxPixels else {
+            return try SenseNovaImageIO.loadEditImage(data: data)
+        }
+        return try SenseNovaImageIO.loadEditImage(data: data, maxPixels: maxPixels)
+    }
+
     public nonisolated init(configuration: Configuration) {
         self.configuration = configuration
     }
 
     public func load() async throws {
         guard model == nil else { return }
+        let window = configuration.window
+        if window != .native, window.footprint(for: configuration.variant) == nil {
+            throw SenseNovaU1PackageError.windowNotDeclared(
+                window: window, variant: configuration.variant)
+        }
         // Engine-executed materialization (contract 1.24) fetches the declared
         // artifact before load(); this guard is the offline backstop.
         guard let snapshot = configuration.resolvedSnapshotDirectory(
@@ -445,8 +579,8 @@ public final class SenseNovaU1Package: ModelPackage {
         params.numSteps = request.steps ?? configuration.variant.defaultSteps
         params.cfgScale = request.guidanceScale.map(Float.init) ?? configuration.variant.defaultGuidance
         params.seed = request.seed ?? 0
-        let width = request.width ?? 1024
-        let height = request.height ?? 1024
+        let width = request.width ?? configuration.window.side ?? 1024
+        let height = request.height ?? configuration.window.side ?? 1024
 
         // token grid is 32 px; a non-multiple silently truncates via integer
         // division and would make the declared Image size a lie.
@@ -455,6 +589,9 @@ public final class SenseNovaU1Package: ModelPackage {
             throw SenseNovaU1PackageError.sizeNotTokenAligned(
                 width: width, height: height, multiple: px)
         }
+        try Self.checkWindow(
+            configuration.window, width: width, height: height, references: 0,
+            guidance: params.cfgScale, imageGuidance: 1)
 
         let think: Bool = {
             switch request.metaData["think"] {
@@ -508,11 +645,10 @@ public final class SenseNovaU1Package: ModelPackage {
         if let negative = request.negativePrompt, !negative.isEmpty {
             throw SenseNovaU1PackageError.negativePromptUnsupportedOnEdit
         }
-        let inputs = try request.images.map {
-            try SenseNovaImageIO.loadEditImage(data: $0.data)
-        }
+        let inputs = try request.images.map { try loadImage($0.data) }
         // Output size: explicit wins, else first input's aspect at ~2048² px
-        // (reference `_resolve_output_size`).
+        // (reference `_resolve_output_size`); under a window, the first
+        // input's own size, which loadImage already scaled into it.
         let px = model.config.pixelsPerToken
         let (width, height): (Int, Int)
         if let w = request.width, let h = request.height {
@@ -520,6 +656,8 @@ public final class SenseNovaU1Package: ModelPackage {
                 throw SenseNovaU1PackageError.sizeNotTokenAligned(width: w, height: h, multiple: px)
             }
             (width, height) = (w, h)
+        } else if configuration.window != .native {
+            (width, height) = (inputs[0].gridW * 16, inputs[0].gridH * 16)
         } else {
             let target = 2048 * 2048
             let (h, w) = SenseNovaImageIO.smartResize(
@@ -541,6 +679,9 @@ public final class SenseNovaU1Package: ModelPackage {
         // three-branch combine needs an empty-prompt prefix too.
         let imgCfgScale = Float(
             try Self.number(request.metaData, "imageGuidance", in: 1.0...4.0) ?? 1.0)
+        try Self.checkWindow(
+            configuration.window, width: width, height: height, references: inputs.count,
+            guidance: params.cfgScale, imageGuidance: imgCfgScale)
 
         let counts = inputs.map(\.tokenCount)
         let condIds = try tokenizer.encode(
@@ -565,7 +706,7 @@ public final class SenseNovaU1Package: ModelPackage {
     private func runAnalysis(
         _ request: ImageAnalysisRequest, model: NEOChatModel, tokenizer: SenseNovaTokenizer
     ) async throws -> ImageAnalysisResponse {
-        let image = try SenseNovaImageIO.loadEditImage(data: request.image.data)
+        let image = try loadImage(request.image.data)
 
         var sampling = SamplingParams()
         sampling.maxNewTokens = Int(

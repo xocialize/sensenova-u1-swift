@@ -61,6 +61,8 @@ let package = Package(
             dependencies: [
                 "MLXSenseNovaU1",
                 .product(name: "MLXServeConformance", package: "mlx-engine-swift"),
+                // the governor and engine admission, for the 16 GB window's tests
+                .product(name: "MLXServeCore", package: "mlx-engine-swift"),
             ],
             path: "Tests/MLXSenseNovaU1Tests"
         ),
