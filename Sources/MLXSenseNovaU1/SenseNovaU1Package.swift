@@ -36,6 +36,24 @@ public enum SenseNovaVariant: String, Codable, Sendable, CaseIterable {
     case fast8V2 = "8step-v2-8bit"
     case fast4V2 = "8step-v2-4bit"
 
+    /// **Multi-turn edit tier: TailSteer + 8-step V2, int8.** The same recipe as
+    /// `fast8V2` over `sensenova/SenseNova-U1.5-8B-MoT-TailSteer` (arXiv:2611.06741),
+    /// a full finetune of the base that reduces the drift that builds up when each
+    /// edit's output becomes the next edit's input. On 8 Add & Preserve chains,
+    /// outside-box PSNR at turn 10 is 18.0 dB against `fast8V2`'s 15.9 dB, and a
+    /// 20-turn chain stays clean where `fast8V2` collapses into a texture artifact
+    /// (AB-R-0841). Single-turn edits and T2I match `fast8V2` at fixed seed, a
+    /// little softer (AB-R-0842).
+    ///
+    /// Two differences from every other distill tier:
+    /// - TailSteer moves the understanding stream too, so VQA answers are NOT
+    ///   token-identical to the base tiers (reworded, accurate on 12 questions).
+    /// - There is no int4 sibling: a 4-bit build loses the benefit (AB-R-0841).
+    ///
+    /// Its footprint is `fast8V2`'s by construction (same tensors, shapes and
+    /// quant); it has not been timed or measured for memory separately.
+    case fast8V2TailSteer = "TailSteer-8step-v2-8bit"
+
     /// **Pose specialty, bf16.** The RefControl pose adapter (v1 @3000, rank 32
     /// / alpha 32, 294 `*_mot_gen` gen-stream projections) merged into the base
     /// checkpoint at fp32 and cast — the same merge the base tiers get for the
@@ -54,7 +72,7 @@ public enum SenseNovaVariant: String, Codable, Sendable, CaseIterable {
     public var quant: Quant {
         switch self {
         case .bf16, .poseBf16: return .bf16
-        case .q8, .fast8, .fast8V2, .pose8: return .int8
+        case .q8, .fast8, .fast8V2, .fast8V2TailSteer, .pose8: return .int8
         case .fast4, .fast4V2: return .int4
         }
     }
@@ -62,6 +80,19 @@ public enum SenseNovaVariant: String, Codable, Sendable, CaseIterable {
     /// LoRA-merged distill tiers run cfg-free at 8 steps (the vendor contract).
     public var isDistilled: Bool {
         self == .fast8 || self == .fast4 || self == .fast8V2 || self == .fast4V2
+            || self == .fast8V2TailSteer
+    }
+
+    /// The upstream checkpoint this tier was converted from. The package manifest's
+    /// `Provenance` pins the base; the TailSteer tier comes from its own upstream
+    /// repo (a finetune of that base), pinned here.
+    public var upstream: (repo: String, revision: String) {
+        switch self {
+        case .fast8V2TailSteer:
+            return ("sensenova/SenseNova-U1.5-8B-MoT-TailSteer", "d6dc59dcacae1b2cb962bbcc25fd08912aa03a87")
+        default:
+            return ("sensenova/SenseNova-U1.5-8B-MoT", "07d76f61474b9c6e6999e22c559314d3439b8c81")
+        }
     }
 
     /// Pose tiers are a **base-checkpoint merge, not a distill** — the sampler
@@ -86,7 +117,8 @@ public enum SenseNovaVariant: String, Codable, Sendable, CaseIterable {
     /// matches the 50-step cfg-4 base edit (28.7 dB) in a tenth of the time
     /// (AB-R-0490). The gates that refused edit and VQA on distill tiers
     /// (2026-08 → 2026-10-11) were never evidence-based. Think mode remains the
-    /// one base-tier-only feature (`distilledTierCannotThink`).
+    /// one base-tier-only feature (`distilledTierCannotThink`). The TailSteer
+    /// tier serves VQA too, on its own (finetuned) understanding stream.
     public var capabilities: Set<Capability> { [.textToImage, .imageEdit, .imageAnalysis] }
 
     /// C6 model-level ranking metadata. Only the pose tiers advertise

@@ -33,7 +33,11 @@ final class LiveSurfaceTests: XCTestCase {
     }
 
     func oracleRender() throws -> Image {
-        let inputURL = URL(fileURLWithPath: #filePath)
+        // SENSENOVA_ORACLE_RENDER overrides the sibling-checkout path (the oracle
+        // tree is not a sibling when the package lives under PROD/).
+        let inputURL = ProcessInfo.processInfo.environment["SENSENOVA_ORACLE_RENDER"]
+            .map { URL(fileURLWithPath: $0) }
+            ?? URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent()
             .appendingPathComponent("sensenova-u1-oracle/renders/sn_1024_s20.png")
@@ -131,7 +135,11 @@ final class LiveSurfaceTests: XCTestCase {
         let package = basePackage()
         try await package.load()
 
-        let inputURL = URL(fileURLWithPath: #filePath)
+        // SENSENOVA_ORACLE_RENDER overrides the sibling-checkout path (the oracle
+        // tree is not a sibling when the package lives under PROD/).
+        let inputURL = ProcessInfo.processInfo.environment["SENSENOVA_ORACLE_RENDER"]
+            .map { URL(fileURLWithPath: $0) }
+            ?? URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent()
             .appendingPathComponent("sensenova-u1-oracle/renders/sn_1024_s20.png")
@@ -176,7 +184,11 @@ final class LiveSurfaceTests: XCTestCase {
         let package = basePackage()
         try await package.load()
 
-        let inputURL = URL(fileURLWithPath: #filePath)
+        // SENSENOVA_ORACLE_RENDER overrides the sibling-checkout path (the oracle
+        // tree is not a sibling when the package lives under PROD/).
+        let inputURL = ProcessInfo.processInfo.environment["SENSENOVA_ORACLE_RENDER"]
+            .map { URL(fileURLWithPath: $0) }
+            ?? URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent()
             .appendingPathComponent("sensenova-u1-oracle/renders/sn_1024_s20.png")
@@ -202,5 +214,52 @@ final class LiveSurfaceTests: XCTestCase {
         XCTAssertTrue(lower.contains("cat"), "answer not grounded in the image: \(text)")
         XCTAssertTrue(lower.contains("red"), "answer missed the chair colour: \(text)")
         print("  [live] vqa: \(text.prefix(160))")
+    }
+
+    // MARK: - TailSteer tier
+
+    /// The TailSteer multi-turn tier through the package: load by variant, edit
+    /// at the tier defaults, and answer VQA on its own understanding stream.
+    /// Gated on the artifact being present (SENSENOVA_TAILSTEER_SNAPSHOT, or the
+    /// artifacts root).
+    func testTailSteerTierEditsAndAnswersVQA() async throws {
+        try requireLive()
+        let path = ProcessInfo.processInfo.environment["SENSENOVA_TAILSTEER_SNAPSHOT"]
+            ?? LivePackageTests.artifactsRoot
+                .appendingPathComponent("SenseNova-U1.5-8B-MoT-TailSteer-8step-v2-8bit").path
+        guard FileManager.default.fileExists(atPath: path) else {
+            throw XCTSkip("no TailSteer artifact at \(path)")
+        }
+        let package = SenseNovaU1Package(
+            configuration: .init(variant: .fast8V2TailSteer, snapshotPath: path))
+        try await package.load()
+        let edit: IEditResponse
+        let text: String
+        do {
+            edit = try await package.run(
+                IEditRequest(
+                    images: [try oracleRender()],
+                    prompt: "Make the chair emerald green velvet. Preserve everything else.",
+                    width: 512, height: 512, seed: 42)) as! IEditResponse
+            text = (try await package.run(
+                ImageAnalysisRequest(
+                    image: try oracleRender(),
+                    prompt: "What animal is shown, and what colour is the chair? Answer briefly.",
+                    metaData: ["maxTokens": .int(80)])) as! ImageAnalysisResponse).text
+        } catch {
+            await package.unload()
+            throw error
+        }
+        await package.unload()
+        XCTAssertGreaterThan(edit.image.data.count, 10_000)
+        let size = LivePackageTests().decodePNGSize(edit.image.data)
+        XCTAssertEqual(size?.0, 512)
+        XCTAssertEqual(size?.1, 512)
+        let lower = text.lowercased()
+        XCTAssertTrue(lower.contains("cat"), "answer not grounded in the image: \(text)")
+        XCTAssertTrue(lower.contains("red"), "answer missed the chair colour: \(text)")
+        try? edit.image.data.write(
+            to: URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("live_edit_tailsteer_smoke.png"))
+        print("  [live] tailsteer edit \(edit.image.data.count) bytes @ \(size!) · vqa: \(text.prefix(160))")
     }
 }

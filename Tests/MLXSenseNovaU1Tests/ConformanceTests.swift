@@ -71,6 +71,22 @@ final class ConformanceTests: XCTestCase {
         }
     }
 
+    /// The TailSteer tier is a distill tier over its own upstream checkpoint: the
+    /// fetch address is ours, the origin is the TailSteer repo, and the sampler
+    /// contract is the 8-step one.
+    func testTailSteerTier() {
+        let v = SenseNovaVariant.fast8V2TailSteer
+        XCTAssertEqual(v.repo, "mlx-community/SenseNova-U1.5-8B-MoT-TailSteer-8step-v2-8bit")
+        XCTAssertEqual(v.quant, .int8)
+        XCTAssertTrue(v.isDistilled)
+        XCTAssertFalse(v.isPoseTuned)
+        XCTAssertEqual(v.upstream.repo, "sensenova/SenseNova-U1.5-8B-MoT-TailSteer")
+        for other in SenseNovaVariant.allCases where other != v {
+            XCTAssertEqual(other.upstream.repo, SenseNovaU1Package.manifest.provenance.sourceRepo)
+            XCTAssertEqual(other.upstream.revision, SenseNovaU1Package.manifest.provenance.revision)
+        }
+    }
+
     func testMATGatePerVariant() {
         for variant in SenseNovaVariant.allCases {
             let report = MaterializationConformance.check(
